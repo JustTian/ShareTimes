@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3122915A194065E900E81937 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31229159194065E900E81937 /* Foundation.framework */; };
+		3122915C194065E900E81937 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3122915B194065E900E81937 /* CoreGraphics.framework */; };
+		3122915E194065E900E81937 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3122915D194065E900E81937 /* UIKit.framework */; };
+		31229164194065E900E81937 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 31229162194065E900E81937 /* InfoPlist.strings */; };
+		31229166194065E900E81937 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31229165194065E900E81937 /* main.m */; };
+		3122916A194065E900E81937 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31229169194065E900E81937 /* AppDelegate.m */; };
+		3122916C194065E900E81937 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3122916B194065E900E81937 /* Images.xcassets */; };
+		31229173194065E900E81937 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31229172194065E900E81937 /* XCTest.framework */; };
+		31229174194065E900E81937 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31229159194065E900E81937 /* Foundation.framework */; };
+		31229175194065E900E81937 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3122915D194065E900E81937 /* UIKit.framework */; };
+		3122917D194065E900E81937 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3122917B194065E900E81937 /* InfoPlist.strings */; };
+		3122917F194065E900E81937 /* ShareTimesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3122917E194065E900E81937 /* ShareTimesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		31229176194065E900E81937 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3122914E194065E900E81937 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31229155194065E900E81937;
+			remoteInfo = ShareTimes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		31229156194065E900E81937 /* ShareTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		31229159194065E900E81937 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3122915B194065E900E81937 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3122915D194065E900E81937 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		31229161194065E900E81937 /* ShareTimes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShareTimes-Info.plist"; sourceTree = "<group>"; };
+		31229163194065E900E81937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		31229165194065E900E81937 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		31229167194065E900E81937 /* ShareTimes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareTimes-Prefix.pch"; sourceTree = "<group>"; };
+		31229168194065E900E81937 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		31229169194065E900E81937 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3122916B194065E900E81937 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		31229171194065E900E81937 /* ShareTimesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareTimesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		31229172194065E900E81937 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3122917A194065E900E81937 /* ShareTimesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShareTimesTests-Info.plist"; sourceTree = "<group>"; };
+		3122917C194065E900E81937 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3122917E194065E900E81937 /* ShareTimesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareTimesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		31229153194065E900E81937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3122915C194065E900E81937 /* CoreGraphics.framework in Frameworks */,
+				3122915E194065E900E81937 /* UIKit.framework in Frameworks */,
+				3122915A194065E900E81937 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3122916E194065E900E81937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31229173194065E900E81937 /* XCTest.framework in Frameworks */,
+				31229175194065E900E81937 /* UIKit.framework in Frameworks */,
+				31229174194065E900E81937 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3122914D194065E900E81937 = {
+			isa = PBXGroup;
+			children = (
+				3122915F194065E900E81937 /* ShareTimes */,
+				31229178194065E900E81937 /* ShareTimesTests */,
+				31229158194065E900E81937 /* Frameworks */,
+				31229157194065E900E81937 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		31229157194065E900E81937 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31229156194065E900E81937 /* ShareTimes.app */,
+				31229171194065E900E81937 /* ShareTimesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31229158194065E900E81937 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31229159194065E900E81937 /* Foundation.framework */,
+				3122915B194065E900E81937 /* CoreGraphics.framework */,
+				3122915D194065E900E81937 /* UIKit.framework */,
+				31229172194065E900E81937 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3122915F194065E900E81937 /* ShareTimes */ = {
+			isa = PBXGroup;
+			children = (
+				31229168194065E900E81937 /* AppDelegate.h */,
+				31229169194065E900E81937 /* AppDelegate.m */,
+				3122916B194065E900E81937 /* Images.xcassets */,
+				31229160194065E900E81937 /* Supporting Files */,
+			);
+			path = ShareTimes;
+			sourceTree = "<group>";
+		};
+		31229160194065E900E81937 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				31229161194065E900E81937 /* ShareTimes-Info.plist */,
+				31229162194065E900E81937 /* InfoPlist.strings */,
+				31229165194065E900E81937 /* main.m */,
+				31229167194065E900E81937 /* ShareTimes-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		31229178194065E900E81937 /* ShareTimesTests */ = {
+			isa = PBXGroup;
+			children = (
+				3122917E194065E900E81937 /* ShareTimesTests.m */,
+				31229179194065E900E81937 /* Supporting Files */,
+			);
+			path = ShareTimesTests;
+			sourceTree = "<group>";
+		};
+		31229179194065E900E81937 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3122917A194065E900E81937 /* ShareTimesTests-Info.plist */,
+				3122917B194065E900E81937 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		31229155194065E900E81937 /* ShareTimes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31229182194065E900E81937 /* Build configuration list for PBXNativeTarget "ShareTimes" */;
+			buildPhases = (
+				31229152194065E900E81937 /* Sources */,
+				31229153194065E900E81937 /* Frameworks */,
+				31229154194065E900E81937 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareTimes;
+			productName = ShareTimes;
+			productReference = 31229156194065E900E81937 /* ShareTimes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		31229170194065E900E81937 /* ShareTimesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31229185194065E900E81937 /* Build configuration list for PBXNativeTarget "ShareTimesTests" */;
+			buildPhases = (
+				3122916D194065E900E81937 /* Sources */,
+				3122916E194065E900E81937 /* Frameworks */,
+				3122916F194065E900E81937 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31229177194065E900E81937 /* PBXTargetDependency */,
+			);
+			name = ShareTimesTests;
+			productName = ShareTimesTests;
+			productReference = 31229171194065E900E81937 /* ShareTimesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3122914E194065E900E81937 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "传晟";
+				TargetAttributes = {
+					31229170194065E900E81937 = {
+						TestTargetID = 31229155194065E900E81937;
+					};
+				};
+			};
+			buildConfigurationList = 31229151194065E900E81937 /* Build configuration list for PBXProject "ShareTimes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3122914D194065E900E81937;
+			productRefGroup = 31229157194065E900E81937 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31229155194065E900E81937 /* ShareTimes */,
+				31229170194065E900E81937 /* ShareTimesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		31229154194065E900E81937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31229164194065E900E81937 /* InfoPlist.strings in Resources */,
+				3122916C194065E900E81937 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3122916F194065E900E81937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3122917D194065E900E81937 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31229152194065E900E81937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3122916A194065E900E81937 /* AppDelegate.m in Sources */,
+				31229166194065E900E81937 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3122916D194065E900E81937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3122917F194065E900E81937 /* ShareTimesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		31229177194065E900E81937 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31229155194065E900E81937 /* ShareTimes */;
+			targetProxy = 31229176194065E900E81937 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		31229162194065E900E81937 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31229163194065E900E81937 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3122917B194065E900E81937 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3122917C194065E900E81937 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		31229180194065E900E81937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		31229181194065E900E81937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		31229183194065E900E81937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareTimes/ShareTimes-Prefix.pch";
+				INFOPLIST_FILE = "ShareTimes/ShareTimes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		31229184194065E900E81937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareTimes/ShareTimes-Prefix.pch";
+				INFOPLIST_FILE = "ShareTimes/ShareTimes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		31229186194065E900E81937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ShareTimes.app/ShareTimes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareTimes/ShareTimes-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ShareTimesTests/ShareTimesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		31229187194065E900E81937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ShareTimes.app/ShareTimes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareTimes/ShareTimes-Prefix.pch";
+				INFOPLIST_FILE = "ShareTimesTests/ShareTimesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31229151194065E900E81937 /* Build configuration list for PBXProject "ShareTimes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31229180194065E900E81937 /* Debug */,
+				31229181194065E900E81937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31229182194065E900E81937 /* Build configuration list for PBXNativeTarget "ShareTimes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31229183194065E900E81937 /* Debug */,
+				31229184194065E900E81937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		31229185194065E900E81937 /* Build configuration list for PBXNativeTarget "ShareTimesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31229186194065E900E81937 /* Debug */,
+				31229187194065E900E81937 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3122914E194065E900E81937 /* Project object */;
+}
