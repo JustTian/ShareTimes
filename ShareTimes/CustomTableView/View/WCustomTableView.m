@@ -201,10 +201,16 @@
     
     return 0;
 }
+//**************设置tableview的头视图
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     view.backgroundColor = [UIColor blueColor];
+    return nil;
+}
+//***************设置tableview的脚视图
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
     return nil;
 }
 //选中状态下的代理方法

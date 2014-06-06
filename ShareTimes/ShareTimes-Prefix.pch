@@ -18,4 +18,9 @@
 #import "CountString.h"
 #import "wDynamicLayout.h"
 #import "NSObject+moreMethords.h"
+
+#import "CommonDataClass.h"
+
+#import "Public.h"//包含一些基本的宏定义文件
+
 #endif

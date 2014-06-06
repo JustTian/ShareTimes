@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "TabBarViewController.h"
 
 @implementation AppDelegate
 
@@ -16,8 +17,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    MainViewController *mainVC = [[MainViewController alloc]init];
-    self.window.rootViewController = mainVC;
+//    MainViewController *mainVC = [[MainViewController alloc]init];
+//    self.window.rootViewController = mainVC;
+    TabBarViewController *tabBarContrller = [[TabBarViewController alloc]init];
+    self.window.rootViewController = tabBarContrller;
     [self.window makeKeyAndVisible];
     return YES;
 }
