@@ -28,6 +28,14 @@
 @property(nonatomic,strong) NSString *font;
 @property(nonatomic,strong) NSString *fontSize;
 
+@property(nonatomic,strong) NSString *borderStyle;
+@property(nonatomic,strong) NSString *secureTextEntry;
+
+@property(nonatomic,strong) NSString *leftViewName;
+@property(nonatomic,strong) NSString *leftViewMode;
+@property(nonatomic,strong) NSString *rightViewName;
+@property(nonatomic,strong) NSString *rightViewMode;
+
 
 +(TextFieldOfMapper *)modelObjectWithDictionary:(NSDictionary *)dictionary;
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;

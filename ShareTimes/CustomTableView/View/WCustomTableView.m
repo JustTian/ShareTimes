@@ -206,7 +206,7 @@
 
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     view.backgroundColor = [UIColor blueColor];
-    return nil;
+    return view;
 }
 //***************设置tableview的脚视图
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -337,7 +337,9 @@
     if (tableView.style == UITableViewStylePlain) {
         string = @"header";
     }else{
-        string = [[_dataArray objectAtIndex:section] objectForKey:keyForSectionName];
+        NSLog(@"section:%d",section);
+//        string = [[_dataArray objectAtIndex:section] objectForKey:keyForSectionName];
+        string = @"头标题";
     }
     return string;
 }
@@ -363,23 +365,23 @@
     return NO;
 }
 //返回表示图的分组标题的数组
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
-    NSArray *aray = [[NSArray alloc]init];
-    if (tableView.style == UITableViewStylePlain) {
-        aray = nil;
-    }else{
-        NSMutableArray *mArray = [[NSMutableArray alloc]init];
-        for (int i = 0; i<_dataArray.count; i++) {
-            if ([[_dataArray objectAtIndex:i]isKindOfClass:[NSDictionary class]]) {
-                NSDictionary *dic = [_dataArray objectAtIndex:i];
-                NSString *seName = [NSString stringWithFormat:@"%@%d",[dic objectForKey:keyForSectionName],i];
-                [mArray addObject:seName];
-            }
-        }
-        aray = mArray;
-    }
-    return aray;
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+//    NSArray *aray = [[NSArray alloc]init];
+//    if (tableView.style == UITableViewStylePlain) {
+//        aray = nil;
+//    }else{
+//        NSMutableArray *mArray = [[NSMutableArray alloc]init];
+//        for (int i = 0; i<_dataArray.count; i++) {
+//            if ([[_dataArray objectAtIndex:i]isKindOfClass:[NSDictionary class]]) {
+//                NSDictionary *dic = [_dataArray objectAtIndex:i];
+//                NSString *seName = [NSString stringWithFormat:@"%@%d",[dic objectForKey:keyForSectionName],i];
+//                [mArray addObject:seName];
+//            }
+//        }
+//        aray = mArray;
+//    }
+//    return aray;
+//}
 
 //处理编辑状态的方法
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{

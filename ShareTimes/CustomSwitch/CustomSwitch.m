@@ -67,6 +67,7 @@
     self = [super initWithFrame:CGRectMake(0, 0, 50, 30)];
     if (self) {
         [self customSetup];
+        [self addTarget:self action:@selector(switchCl:) forControlEvents:UIControlEventValueChanged];
     }
     return self;
 }
@@ -88,8 +89,13 @@
     self = [super initWithFrame:initFrame];
     if (self) {
         [self customSetup];
+        [self addTarget:self action:@selector(switchCl:) forControlEvents:UIControlEventValueChanged];
     }
     return self;
+}
+
+-(void)switchCl:(CustomSwitch *)sender{
+    self.switchBlock(self);
 }
 
 -(void)customSetup{

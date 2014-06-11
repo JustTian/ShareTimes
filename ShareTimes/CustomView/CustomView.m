@@ -38,6 +38,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.customViewBlock = ^(CustomView *customView){
+            NSLog(@"CustomView 的初始响应设定");
+        };
+
     }
     return self;
 }

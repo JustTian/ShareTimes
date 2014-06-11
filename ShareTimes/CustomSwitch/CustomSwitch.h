@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class CustomSwitch;
+typedef  void (^SwitchBlock) (CustomSwitch *);
+
 @interface CustomSwitch : UIControl
+
+@property(nonatomic,copy) SwitchBlock switchBlock;
+
 @property(nonatomic,assign) BOOL on;               //判断是否开关状态
 @property(nonatomic,strong) UIColor *inactiveColor;//不活跃的
 @property(nonatomic,strong) UIColor *activeColor;  //活跃的

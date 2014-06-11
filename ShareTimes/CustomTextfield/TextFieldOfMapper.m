@@ -27,6 +27,15 @@ NSString *const kTextFieldTextColor =@"TkeyTextColor";
 NSString *const kTextFieldFont = @"TkeyFont";
 NSString *const kTextFieldFontSize =@"TkeyFontSize";
 
+NSString *const kTextFieldBorderStyle = @"TkeyBorderStyle";
+NSString *const kTextFieldSecureTE =@"TkeySecureTextEntry";
+
+
+NSString *const kTextFieldLVN = @"TkeyLeftViewName";
+NSString *const kTextFieldLVM =@"TkeyLeftViewMode";
+NSString *const kTextFieldRVN = @"TkeyRightViewName";
+NSString *const kTextFieldRVM =@"TkeyRightViewMode";
+
 @interface TextFieldOfMapper ()
 @property(nonatomic,strong)CountString *countSting;
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
@@ -76,6 +85,14 @@ NSString *const kTextFieldFontSize =@"TkeyFontSize";
         self.font = [self objectOrNilForKey:kTextFieldFont fromDictionary:dictionary];
         self.fontSize = [self objectOrNilForKey:kTextFieldFontSize fromDictionary:dictionary];
         
+        self.borderStyle = [self objectOrNilForKey:kTextFieldBorderStyle fromDictionary:dictionary];
+        self.secureTextEntry = [self objectOrNilForKey:kTextFieldSecureTE fromDictionary:dictionary];
+        
+        self.leftViewName = [self objectOrNilForKey:kTextFieldLVN fromDictionary:dictionary];
+        self.leftViewMode = [self objectOrNilForKey:kTextFieldLVM fromDictionary:dictionary];
+        self.rightViewName = [self objectOrNilForKey:kTextFieldRVN fromDictionary:dictionary];
+        self.rightViewMode = [self objectOrNilForKey:kTextFieldRVM fromDictionary:dictionary];
+        
     }
     return self;
 }
@@ -99,6 +116,14 @@ NSString *const kTextFieldFontSize =@"TkeyFontSize";
     [mutableDict setValue:self.font forKey:kTextFieldFont];
     [mutableDict setValue:self.fontSize forKey:kTextFieldFontSize];
     
+    [mutableDict setValue:self.secureTextEntry forKeyPath:kTextFieldSecureTE];
+    [mutableDict setValue:self.borderStyle forKeyPath:kTextFieldBorderStyle];
+    
+    [mutableDict setValue:self.leftViewName forKey:kTextFieldLVN];
+    [mutableDict setValue:self.leftViewMode forKey:kTextFieldLVM];
+    [mutableDict setValue:self.rightViewName forKey:kTextFieldRVN];
+    [mutableDict setValue:self.rightViewMode forKey:kTextFieldRVM];
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -114,4 +139,6 @@ NSString *const kTextFieldFontSize =@"TkeyFontSize";
     id object = [dict objectForKey:aKey];
     return [object isEqual:[NSNull null]] ? nil : object;
 }
+
+
 @end

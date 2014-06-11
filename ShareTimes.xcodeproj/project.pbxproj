@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31064F721945429000AD8C55 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31064F711945429000AD8C55 /* LoginViewController.m */; };
+		31064F74194542F200AD8C55 /* functionViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 31064F73194542F200AD8C55 /* functionViewController.json */; };
+		31064F761945431F00AD8C55 /* LoginViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 31064F751945431F00AD8C55 /* LoginViewController.json */; };
+		31064F781945433C00AD8C55 /* usersViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 31064F771945433C00AD8C55 /* usersViewController.json */; };
+		31064F7D19454E8100AD8C55 /* password_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 31064F7919454E8100AD8C55 /* password_icon.png */; };
+		31064F7E19454E8100AD8C55 /* password_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31064F7A19454E8100AD8C55 /* password_icon@2x.png */; };
+		31064F7F19454E8100AD8C55 /* user_name_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 31064F7B19454E8100AD8C55 /* user_name_icon.png */; };
+		31064F8019454E8100AD8C55 /* user_name_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31064F7C19454E8100AD8C55 /* user_name_icon@2x.png */; };
 		310A7D6219419AA1000D8AD8 /* CommonDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 310A7D6119419AA1000D8AD8 /* CommonDataClass.m */; };
 		3122915A194065E900E81937 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31229159194065E900E81937 /* Foundation.framework */; };
 		3122915C194065E900E81937 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3122915B194065E900E81937 /* CoreGraphics.framework */; };
@@ -115,6 +123,8 @@
 		31281759194169A000BED569 /* user_18x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128173C194169A000BED569 /* user_18x24.png */; };
 		3128175A194169A000BED569 /* user_24x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128173D194169A000BED569 /* user_24x32.png */; };
 		3128175B194169A000BED569 /* x_alt_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128173E194169A000BED569 /* x_alt_32x32.png */; };
+		31C2AEC51946B022008D96B7 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C2AEC41946B022008D96B7 /* FourthViewController.m */; };
+		31C2AEC71946B036008D96B7 /* fourthViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 31C2AEC61946B036008D96B7 /* fourthViewController.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +138,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31064F701945429000AD8C55 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		31064F711945429000AD8C55 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		31064F73194542F200AD8C55 /* functionViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = functionViewController.json; sourceTree = "<group>"; };
+		31064F751945431F00AD8C55 /* LoginViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoginViewController.json; sourceTree = "<group>"; };
+		31064F771945433C00AD8C55 /* usersViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = usersViewController.json; sourceTree = "<group>"; };
+		31064F7919454E8100AD8C55 /* password_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password_icon.png; sourceTree = "<group>"; };
+		31064F7A19454E8100AD8C55 /* password_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password_icon@2x.png"; sourceTree = "<group>"; };
+		31064F7B19454E8100AD8C55 /* user_name_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_name_icon.png; sourceTree = "<group>"; };
+		31064F7C19454E8100AD8C55 /* user_name_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_name_icon@2x.png"; sourceTree = "<group>"; };
 		310A7D6019419AA1000D8AD8 /* CommonDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDataClass.h; sourceTree = "<group>"; };
 		310A7D6119419AA1000D8AD8 /* CommonDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDataClass.m; sourceTree = "<group>"; };
 		31229156194065E900E81937 /* ShareTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,6 +316,9 @@
 		3128173C194169A000BED569 /* user_18x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_18x24.png; sourceTree = "<group>"; };
 		3128173D194169A000BED569 /* user_24x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_24x32.png; sourceTree = "<group>"; };
 		3128173E194169A000BED569 /* x_alt_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_alt_32x32.png; sourceTree = "<group>"; };
+		31C2AEC31946B022008D96B7 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
+		31C2AEC41946B022008D96B7 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
+		31C2AEC61946B036008D96B7 /* fourthViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fourthViewController.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,10 +399,12 @@
 				3122924B19406B0600E81937 /* ControllerS */,
 				31229168194065E900E81937 /* AppDelegate.h */,
 				31229169194065E900E81937 /* AppDelegate.m */,
-				312817131941560C00BED569 /* RegisterViewController.h */,
-				312817141941560C00BED569 /* RegisterViewController.m */,
 				3128171F1941687100BED569 /* MainController.json */,
 				312291941940679500E81937 /* baseViewController.json */,
+				31064F73194542F200AD8C55 /* functionViewController.json */,
+				31064F771945433C00AD8C55 /* usersViewController.json */,
+				31064F751945431F00AD8C55 /* LoginViewController.json */,
+				31C2AEC61946B036008D96B7 /* fourthViewController.json */,
 				3122916B194065E900E81937 /* Images.xcassets */,
 				31229160194065E900E81937 /* Supporting Files */,
 			);
@@ -714,6 +738,12 @@
 				3128171A194165F400BED569 /* FunctionViewController.m */,
 				3128171C1941660A00BED569 /* UsersViewController.h */,
 				3128171D1941660A00BED569 /* UsersViewController.m */,
+				31064F701945429000AD8C55 /* LoginViewController.h */,
+				31064F711945429000AD8C55 /* LoginViewController.m */,
+				312817131941560C00BED569 /* RegisterViewController.h */,
+				312817141941560C00BED569 /* RegisterViewController.m */,
+				31C2AEC31946B022008D96B7 /* FourthViewController.h */,
+				31C2AEC41946B022008D96B7 /* FourthViewController.m */,
 			);
 			name = ControllerS;
 			sourceTree = "<group>";
@@ -750,6 +780,10 @@
 				3128173C194169A000BED569 /* user_18x24.png */,
 				3128173D194169A000BED569 /* user_24x32.png */,
 				3128173E194169A000BED569 /* x_alt_32x32.png */,
+				31064F7919454E8100AD8C55 /* password_icon.png */,
+				31064F7A19454E8100AD8C55 /* password_icon@2x.png */,
+				31064F7B19454E8100AD8C55 /* user_name_icon.png */,
+				31064F7C19454E8100AD8C55 /* user_name_icon@2x.png */,
 			);
 			path = Iamges;
 			sourceTree = "<group>";
@@ -841,6 +875,8 @@
 				31281740194169A000BED569 /* 2.png in Resources */,
 				3128174C194169A000BED569 /* heart_fill_32x38.png in Resources */,
 				312292261940679600E81937 /* register_password@2x.png in Resources */,
+				31064F74194542F200AD8C55 /* functionViewController.json in Resources */,
+				31C2AEC71946B036008D96B7 /* fourthViewController.json in Resources */,
 				31281744194169A000BED569 /* 6.png in Resources */,
 				31281755194169A000BED569 /* mail_16x12.png in Resources */,
 				312292281940679600E81937 /* register_user@2x.png in Resources */,
@@ -859,15 +895,21 @@
 				3128174D194169A000BED569 /* heart_stroke_16x14.png in Resources */,
 				31281757194169A000BED569 /* mail_32x24.png in Resources */,
 				31281741194169A000BED569 /* 3.png in Resources */,
+				31064F7F19454E8100AD8C55 /* user_name_icon.png in Resources */,
 				31281752194169A000BED569 /* magnifying_glass_16x16.png in Resources */,
+				31064F761945431F00AD8C55 /* LoginViewController.json in Resources */,
 				312292221940679600E81937 /* isRead_waiting_selectButton@2x.png in Resources */,
 				312292231940679600E81937 /* mypoisition@2x.png in Resources */,
 				3128175B194169A000BED569 /* x_alt_32x32.png in Resources */,
+				31064F7E19454E8100AD8C55 /* password_icon@2x.png in Resources */,
 				31281754194169A000BED569 /* magnifying_glass_alt_32x32.png in Resources */,
 				312817201941687100BED569 /* MainController.json in Resources */,
+				31064F781945433C00AD8C55 /* usersViewController.json in Resources */,
+				31064F7D19454E8100AD8C55 /* password_icon.png in Resources */,
 				31281758194169A000BED569 /* user_12x16.png in Resources */,
 				312292211940679600E81937 /* isRead_selectedButton@2x.png in Resources */,
 				31281747194169A000BED569 /* 9.png in Resources */,
+				31064F8019454E8100AD8C55 /* user_name_icon@2x.png in Resources */,
 				3122921F1940679600E81937 /* button_back_bg_highlight@2x.png in Resources */,
 				31281746194169A000BED569 /* 8.png in Resources */,
 				3128174E194169A000BED569 /* heart_stroke_24x21.png in Resources */,
@@ -910,6 +952,7 @@
 				312292181940679600E81937 /* MyTableViewCell.m in Sources */,
 				312292351940679600E81937 /* ScrollerViewOfMapper.m in Sources */,
 				3122921B1940679600E81937 /* ImageViewOfMapper.m in Sources */,
+				31C2AEC51946B022008D96B7 /* FourthViewController.m in Sources */,
 				312292391940679600E81937 /* SliderOfMapper.m in Sources */,
 				312292381940679600E81937 /* CustomSlider.m in Sources */,
 				3122920D1940679600E81937 /* UIImage+Additions.m in Sources */,
@@ -926,6 +969,7 @@
 				3122923E1940679600E81937 /* FirstCellMember.m in Sources */,
 				312292301940679600E81937 /* RefreshFooterView.m in Sources */,
 				312292131940679600E81937 /* GridMainTableView.m in Sources */,
+				31064F721945429000AD8C55 /* LoginViewController.m in Sources */,
 				3122920B1940679600E81937 /* HandlesClickAction.m in Sources */,
 				312292411940679600E81937 /* CustomTextField.m in Sources */,
 				3122923D1940679600E81937 /* BaseCellMember.m in Sources */,

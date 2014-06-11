@@ -12,6 +12,8 @@
 #import "UsersViewController.h"
 
 #import "RegisterViewController.h"
+#import "LoginViewController.h"
+#import "FourthViewController.h"
 
 @interface TabBarViewController ()
 
@@ -32,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    self.view.backgroundColor = [UIColor yellowColor];
     // Do any additional setup after loading the view.
     MainViewController *mainVC = [[MainViewController alloc]init];
     UITabBarItem *imageViewItem1 = [[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"home_24x24"] tag:10];
@@ -48,7 +51,14 @@
     [userVC setTabBarItem:imageViewItem3];
     UINavigationController *userNVC = [[UINavigationController alloc]initWithRootViewController:userVC];
     
-    NSArray *items = @[mainNVC,funNVC,userNVC];
+    FourthViewController *fuserVC = [[FourthViewController alloc]init];
+    UITabBarItem *imageViewItem4 = [[UITabBarItem alloc]initWithTitle:@"测试题" image:[UIImage imageNamed:@"isRead_selectedButton@2x"] tag:10];
+    [fuserVC setTabBarItem:imageViewItem4];
+    UINavigationController *fuserNVC = [[UINavigationController alloc]initWithRootViewController:fuserVC];
+
+    NSArray *items = @[mainNVC,funNVC,userNVC,fuserNVC];
+    
+    //这里设置代理控制是否有用户登录
     self.delegate = self;
     [self setViewControllers:items animated:YES];
     
@@ -57,18 +67,32 @@
 #pragma mark UITabBarControllers Delegate
 
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-    NSLog(@"%d",tabBarController.selectedIndex);
-    if (tabBarController.selectedIndex == 0) {
+    NSLog(@"%lu",(unsigned long)tabBarController.selectedIndex);
+    if ([viewController.title isEqualToString:@"个人中心"]) {
         if ([CommonDataClass sharCommonData].userID == nil) {
             NSLog(@"没有用户登录");
-            RegisterViewController *regstrer = [[RegisterViewController alloc]init];
-            [self presentViewController:regstrer animated:YES completion:nil];
+//            RegisterViewController *regstrer = [[RegisterViewController alloc]init];
+//            [self presentViewController:regstrer animated:YES completion:nil];
+            LoginViewController *loginVC = [[LoginViewController alloc]init];
+            [self presentViewController:loginVC animated:NO completion:nil];
         }
         return NO;
     }else{
-    
         return YES;
     }
+//    if (tabBarController.selectedIndex != 2) {
+//        if ([CommonDataClass sharCommonData].userID == nil) {
+//            NSLog(@"没有用户登录");
+////            RegisterViewController *regstrer = [[RegisterViewController alloc]init];
+////            [self presentViewController:regstrer animated:YES completion:nil];
+//            LoginViewController *loginVC = [[LoginViewController alloc]init];
+//            [self presentViewController:loginVC animated:YES completion:nil];
+//        }
+//        return NO;
+//    }else{
+//    
+//        return YES;
+//    }
 }
 
 -(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
