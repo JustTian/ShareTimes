@@ -7,6 +7,7 @@
 //
 
 #import "UsersViewController.h"
+#import "customButton.h"
 
 @interface UsersViewController ()
 
@@ -28,6 +29,42 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
+    
+    NSString *nameString = @"usersViewController.json";
+    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameString];
+    [dynamicLayout drawingInterfaceFromJSONName:nameString AndBaseView:self.view];
+    
+    NSDictionary *lDic = [dynamicLayout getItemsOfGroup:lDictionary];
+    NSLog(@"控件：%@",lDic);
+    
+    NSArray *widgetArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
+    [self customButtonClick:widgetArray];//执行响应的响应事件
+
+}
+
+-(void)customButtonClick:(NSArray *)array{
+    if (array.count) {
+        for (int i =0; i<array.count; i++) {
+            if ([[array objectAtIndex:i]isKindOfClass:[customButton class]]) {
+                customButton *cButton = [array objectAtIndex:i];
+                __block customButton *cB = cButton;
+                cButton.myblock = ^(customButton *button){
+                    
+                    if (cB.clickOfType == 0) {
+                        
+                    }
+                    if (cB.clickOfType == 1) {
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
+                    NSLog(@"____________%@",[cB class]);
+                };
+                
+            }
+        }
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning

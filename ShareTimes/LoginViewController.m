@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "UsersViewController.h"
 
 #import "TopNavBar.h"
 #import "CustomTextField.h"
@@ -62,7 +63,10 @@
                         RegisterViewController *regstrer = [[RegisterViewController alloc]init];
                         [self presentViewController:regstrer animated:YES completion:nil];
                     }
-
+                    if (cB.clickOfType == 1) {
+                        UsersViewController *userVC = [[UsersViewController alloc]init];
+                        [self presentViewController:userVC animated:YES completion:nil];
+                    }
                     NSLog(@"____________%@",[cB class]);
                 };
                 

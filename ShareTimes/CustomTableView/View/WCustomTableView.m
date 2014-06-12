@@ -33,7 +33,7 @@
     wcTabelView.frame = wRect;
     wcTabelView.isCustomCell = [tableOfMapper.isCustomCell boolValue];
     wcTabelView.tag = [tableOfMapper.tag integerValue];
-    wcTabelView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;//设置分割线
+    wcTabelView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//设置分割线
     wcTabelView.allowsSelection  = YES; //cell是否可以被选择
     
     if (wcTabelView.isCustomCell) {
@@ -85,7 +85,7 @@
         FirstCellMember *member = [[FirstCellMember alloc]init];
         if (isYes) {
             member.labelText = @"how are you?";
-            member.image = [UIImage imageNamed:@"5"];
+            member.image = [UIImage imageNamed:@"heart_fill_32x38"];
             isYes = NO;
         }else{
             member.labelText = @"I'm fine!";
@@ -164,65 +164,7 @@
 }
 
 
-#pragma mark tableView Delegate
 
-//IOS7.0新增的三个预估计高度设置的方法
-//将允许快速加载表视图
-
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 40;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section{
-//    
-//    return 44;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section{
-//    self.tableFooterView.backgroundColor = [UIColor blueColor];
-//    return 44;
-//}
-
-//如果执行了上述三个方法，那么以下三个方法将推迟到视图可以显示出来，因此在此可以放置更加昂贵的逻辑
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    WFirstCustomCell *wCell = (WFirstCustomCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    CGFloat height = 40;
-//    if (_isCustomCell) {
-//        NSString *text = wCell.wTestLabel.text;
-//        CGSize size = [text sizeWithFont:wCell.wTestLabel.font constrainedToSize:CGSizeMake(260, 300)];
-////        CGSize wSize = [text boundingRectWithSize:CGSizeMake(320, 300) options:<#(NSStringDrawingOptions)#> attributes:<#(NSDictionary *)#> context:<#(NSStringDrawingContext *)#>]
-//        height = size.height < 40? 40 :size.height + 10;
-//    }
-    return 40;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    self.tableHeaderView.backgroundColor = [UIColor redColor];
-    return 0;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    
-    return 0;
-}
-//**************设置tableview的头视图
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    view.backgroundColor = [UIColor blueColor];
-    return view;
-}
-//***************设置tableview的脚视图
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    
-    return nil;
-}
-//选中状态下的代理方法
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"didSelectRowAtIndexPath");
-}
-//取消选中执行的代理方法
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"didDeselectRowAtIndexPth");
-}
 #pragma mark tableView DataSource
 //设置表示图的分组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -337,7 +279,7 @@
     if (tableView.style == UITableViewStylePlain) {
         string = @"header";
     }else{
-        NSLog(@"section:%d",section);
+        NSLog(@"section:%ld",(long)section);
 //        string = [[_dataArray objectAtIndex:section] objectForKey:keyForSectionName];
         string = @"头标题";
     }
@@ -353,15 +295,14 @@
     }
     return string;
 }
-
 //关于编辑的代理方法
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     return YES;
 }
 //关于移动的代理方法
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     return NO;
 }
 //返回表示图的分组标题的数组
@@ -385,11 +326,70 @@
 
 //处理编辑状态的方法
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
 }
 //处理移动状态的方法
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-   
+    
+}
+
+
+#pragma mark tableView Delegate
+/* 
+ *
+ *
+ *
+ */
+//IOS7.0新增的三个预估计高度设置的方法
+//将允许快速加载表视图
+
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 40;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section{
+//
+//    return 44;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section{
+//    self.tableFooterView.backgroundColor = [UIColor blueColor];
+//    return 44;
+//}
+
+//如果执行了上述三个方法，那么以下三个方法将推迟到视图可以显示出来，因此在此可以放置更加昂贵的逻辑
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 60;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    self.tableHeaderView.backgroundColor = [UIColor redColor];
+    
+    return 0;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 0;
+}
+//**************设置tableview的头视图
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    view.backgroundColor = [UIColor blueColor];
+    return view;
+}
+//***************设置tableview的脚视图
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    return nil;
+}
+//选中状态下的代理方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.myTCellSelectedBlock(indexPath);
+    NSLog(@"didSelectRowAtIndexPath");
+}
+//取消选中执行的代理方法
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"didDeselectRowAtIndexPth");
 }
 
 #pragma mark 辅助方法

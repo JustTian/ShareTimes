@@ -29,6 +29,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *rightBT = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightBTClick:)];
+    self.navigationItem.rightBarButtonItem = rightBT;
+    
     // Do any additional setup after loading the view.
     wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
     NSString *nameJstring = @"fourthViewController.json";
@@ -47,6 +51,10 @@
     NSArray *customViewArray = [dynamicLayout instanceCustomViewFromDic:ldic AndSupperView:self.view];
     [self customViewClick:customViewArray];
     
+}
+-(void)rightBTClick:(UIBarButtonItem *)sender{
+
+    NSLog(@"rightBarButton be touch");
 }
 -(void)customButtonClick:(NSArray *)array{
     if (array.count) {

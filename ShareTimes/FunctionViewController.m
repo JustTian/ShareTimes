@@ -114,10 +114,14 @@
             if ([[array objectAtIndex:i]isKindOfClass:[WCustomTableView class]]){
                 WCustomTableView *cTableView = [array objectAtIndex:i];
                 [self addHeaderWithTableView:cTableView];
+                cTableView.myTCellSelectedBlock = ^(NSIndexPath *indexPath){
+                    NSLog(@"cell Be Selcected at %ld",(long)indexPath.row);
+                };
             }
         }
     }
 }
+
 #pragma mark 表视图的头部刷新控件关联
 //在此进行重载数据
 - (void)addHeaderWithTableView:(WCustomTableView *)cTableView
