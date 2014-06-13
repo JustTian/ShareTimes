@@ -15,5 +15,5 @@
 @property (nonatomic,retain)UIImageView *wImageView;
 @property (nonatomic,retain)UILabel *wTestLabel;
 @property (nonatomic,retain)FirstCellMember *member;
-@property (nonatomic,retain)BaseCellMember  *baseMember;
+//@property (nonatomic,retain)BaseCellMember  *baseMember;
 @end

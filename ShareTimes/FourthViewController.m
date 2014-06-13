@@ -10,6 +10,7 @@
 #import "HeaderForCustoms.h"
 @interface FourthViewController ()
 @property(nonatomic,retain)NSArray *comomArray;
+@property(nonatomic,retain)NSArray *cLabelArray;
 @end
 
 #define BackName1 @"4.png"
@@ -51,9 +52,16 @@
     NSArray *customViewArray = [dynamicLayout instanceCustomViewFromDic:ldic AndSupperView:self.view];
     [self customViewClick:customViewArray];
     
+    
+    //取出label数组
+    self.cLabelArray = [dynamicLayout instanceCustomLabelFromDic:ldic AndSupperView:self.view];
+    
 }
 -(void)rightBTClick:(UIBarButtonItem *)sender{
-
+    for (int i =0; i<self.cLabelArray.count; i++) {
+        CustomLabel *cla = [self.cLabelArray objectAtIndex:i];
+        cla.text = @"gaibain";
+    }
     NSLog(@"rightBarButton be touch");
 }
 -(void)customButtonClick:(NSArray *)array{

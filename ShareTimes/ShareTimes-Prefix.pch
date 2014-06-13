@@ -23,4 +23,6 @@
 
 #import "Public.h"//包含一些基本的宏定义文件
 
+#import "AFNetworking.h"
+
 #endif

@@ -32,8 +32,13 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _wTestLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        _wTestLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.height, 0, self.frame.size.width-self.frame.size.height, self.frame.size.height)];
+        _wTestLabel.numberOfLines = 0;
+        _wTestLabel.font = [UIFont boldSystemFontOfSize:15];
+//        _wTestLabel.backgroundColor = [UIColor grayColor];
+        
         _wImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.origin.x+5, self.frame.origin.y+5, self.frame.size.height-10, self.frame.size.height-10)];
+        _wImageView.contentMode = UIViewContentModeCenter;
         [self addSubview:_wTestLabel];
         [self addSubview:_wImageView];
         //设置包含视图的基本属性
@@ -46,6 +51,38 @@
     return self;
 }
 
+-(void)layoutSubviews{
+    CGFloat height = [self heightContentBackgroundView:self.wTestLabel.text];
+    //image跟随放大缩小时这样设置
+//    self.wTestLabel.frame = CGRectMake(self.frame.size.height, 0, self.frame.size.width-self.frame.size.height, height);
+    //
+    self.wTestLabel.frame = CGRectMake(self.wImageView.frame.size.width+10, 0, self.frame.size.width-self.frame.size.height, height);
+    if (!self.wImageView.image) {
+        self.wImageView.center = CGPointMake(self.wImageView.center.x, self.wTestLabel.center.y);
+//        self.wImageView.frame = CGRectMake(5, 5, self.frame.size.height-10, self.frame.size.height-10);
+        self.wImageView.backgroundColor = [UIColor grayColor];
+    }
+}
+- (CGFloat)heightContentBackgroundView:(NSString *)content
+{
+    CGFloat height = [self heigtOfLabelForFromString:content fontSizeandLabelWidth:320-self.frame.size.height andFontSize:15.0];
+    if (height<44)
+    {
+        height = 44;
+    }
+//    height += 10;
+    
+    return height;
+}
+
+- (CGFloat)heigtOfLabelForFromString:(NSString *)text fontSizeandLabelWidth:(CGFloat)width andFontSize:(CGFloat)fontSize
+{
+    
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, 20000)];
+    return size.height;
+}
+
+
 -(void)setMember:(FirstCellMember *)member{
     
     _member = member;
@@ -55,15 +92,15 @@
     }
 }
 
--(void)setBaseMember:(BaseCellMember *)baseMember{
-
-    _baseMember = baseMember;
-    self.textLabel.text = baseMember.mainString;
-    self.detailTextLabel.text = baseMember.detailString;
-    if (baseMember.isShowImage) {
-        self.imageView.image = baseMember.imageName;
-    }
-}
+//-(void)setBaseMember:(BaseCellMember *)baseMember{
+//
+//    _baseMember = baseMember;
+//    self.textLabel.text = baseMember.mainString;
+//    self.detailTextLabel.text = baseMember.detailString;
+//    if (baseMember.isShowImage) {
+//        self.imageView.image = baseMember.imageName;
+//    }
+//}
 
 - (void)awakeFromNib
 {
