@@ -18,10 +18,15 @@ typedef void (^MyTableViewCellUnSelectBlock) (NSIndexPath *UnSelectedIndex);
 @interface WCustomTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,retain) NSMutableArray *dataArray;//tableViewCell的数据数组
+@property (nonatomic,retain) NSMutableArray *sectionTitleArray;
+@property (nonatomic,retain) NSMutableArray *footGroupArray;
 @property (nonatomic,assign) BOOL isCustomCell;
 
 @property (nonatomic,retain) UIView *tHeaderView;
 @property (nonatomic,retain) UIView *tFooterView;
+
+@property (nonatomic,assign) BOOL isHeadView;
+@property (nonatomic,assign) BOOL isFootView;
 
 //定制响应block
 @property(nonatomic,copy) MyTableViewCellSelectionBlock myTCellSelectedBlock;

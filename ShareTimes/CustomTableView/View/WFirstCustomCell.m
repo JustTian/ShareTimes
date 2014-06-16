@@ -57,10 +57,12 @@
 //    self.wTestLabel.frame = CGRectMake(self.frame.size.height, 0, self.frame.size.width-self.frame.size.height, height);
     //
     self.wTestLabel.frame = CGRectMake(self.wImageView.frame.size.width+10, 0, self.frame.size.width-self.frame.size.height, height);
+    self.wImageView.center = CGPointMake(self.wImageView.center.x, self.wTestLabel.center.y);
+    
     if (!self.wImageView.image) {
-        self.wImageView.center = CGPointMake(self.wImageView.center.x, self.wTestLabel.center.y);
+        
 //        self.wImageView.frame = CGRectMake(5, 5, self.frame.size.height-10, self.frame.size.height-10);
-        self.wImageView.backgroundColor = [UIColor grayColor];
+        self.wImageView.backgroundColor = [UIColor clearColor];
     }
 }
 - (CGFloat)heightContentBackgroundView:(NSString *)content

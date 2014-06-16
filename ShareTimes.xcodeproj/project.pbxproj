@@ -790,10 +790,10 @@
 		3122924B19406B0600E81937 /* ControllerS */ = {
 			isa = PBXGroup;
 			children = (
+				3122924D19406B4F00E81937 /* MainViewController.m */,
 				31281716194165A600BED569 /* TabBarViewController.h */,
 				31281717194165A600BED569 /* TabBarViewController.m */,
 				3122924C19406B4F00E81937 /* MainViewController.h */,
-				3122924D19406B4F00E81937 /* MainViewController.m */,
 				31281719194165F300BED569 /* FunctionViewController.h */,
 				3128171A194165F400BED569 /* FunctionViewController.m */,
 				3128171C1941660A00BED569 /* UsersViewController.h */,

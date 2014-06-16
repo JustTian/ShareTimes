@@ -38,6 +38,14 @@
     wcTabelView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//设置分割线
     wcTabelView.allowsSelection  = YES; //cell是否可以被选择
     
+//    wcTabelView.isHeadView = YES;
+    
+    wcTabelView.delegate = wcTabelView;
+    wcTabelView.dataSource = wcTabelView;
+    //初始化头视图
+    wcTabelView.tHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+    wcTabelView.tHeaderView.backgroundColor = [UIColor redColor];
+    
     if (wcTabelView.isCustomCell) {
         if (wcTabelView.style == UITableViewStylePlain) {
             [wcTabelView gainFCMDataArray];
@@ -60,8 +68,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.delegate = self;
-        self.dataSource = self;
+//        self.delegate = self;
+//        self.dataSource = self;
     }
     return self;
 }
@@ -72,9 +80,12 @@
     if (self) {
         self.tag = 101;
         _dataArray  = [[NSMutableArray alloc]init];
+        _sectionTitleArray = [[NSMutableArray alloc]init];
+        _footGroupArray = [[NSMutableArray alloc]init];
+        
         _isCustomCell = NO;
-        self.delegate = self;
-        self.dataSource = self;
+//        self.delegate = self;
+//        self.dataSource = self;
     }
     return self;
 }
@@ -82,26 +93,47 @@
 #pragma mark 获取cell的数据 dataArray
 //获取表视图的数据源(第一种cell)不分组的
 -(void)gainFCMDataArray{
-    BOOL isYes = YES;
-    for (int i = 0; i< 6; i++) {
-        FirstCellMember *member = [[FirstCellMember alloc]init];
-        if (isYes) {
-            member.labelText = @"how are you?";
-            member.image = [UIImage imageNamed:@"heart_fill_32x38"];
-            isYes = NO;
-        }else{
-            member.labelText = @"I'm fine!反狂萨芬是反动拉反dsa发动机拉飞但赛a费 翻开放到是尽量空a 负担凯撒发动垃圾分量撒飞单孔啦发动啦发dsa了发冬";
-            member.image = nil;
-            isYes = YES;
+//    BOOL isYes = YES;
+//    for (int i = 0; i< 6; i++) {
+//        FirstCellMember *member = [[FirstCellMember alloc]init];
+//        if (isYes) {
+//            member.labelText = @"how are you?";
+//            member.image = [UIImage imageNamed:@"heart_fill_32x38"];
+//            isYes = NO;
+//        }else{
+//            member.labelText = @"I'm fine!反狂萨芬是反动拉反dsa发动机拉飞但赛a费 翻开放到是尽量空a 负担凯撒发动垃圾分量撒飞单孔啦发动啦发dsa了发冬";
+//            member.image = [UIImage imageNamed:@"heart_fill_32x38"];
+//            isYes = YES;
+//        }
+//        [_dataArray addObject:member];
+//        
+//    }
+    NSArray *ttArray = @[@"第一套",@"第二套",@"第三套",@"第四套",@"第五套"];
+    
+        for (int i = 0; i<4; i++) {
+            FirstCellMember *member = [[FirstCellMember alloc]init];
+            member.labelText = [ttArray objectAtIndex:i];
+            [_dataArray addObject:member];
         }
-        [_dataArray addObject:member];
-        
-    }
+//        [_dataArray addObject:itemArray];
+    
     
 }
 //获取表视图的数据源(第一种cell)分组的
 -(void)gainFCMDataArrayForGrouped{
-    
+    NSArray *ttArray = @[@"第一套",@"第二套",@"题目类型3",@"题目类型4",@"题目类型5"];
+    for (int t = 0; t<3; t++) {
+        NSMutableArray *itemArray = [[NSMutableArray alloc]init];
+        for (int i = 0; i<1; i++) {
+            FirstCellMember *member = [[FirstCellMember alloc]init];
+            member.labelText = [ttArray objectAtIndex:t];
+            [itemArray addObject:member];
+        }
+        [_dataArray addObject:itemArray];
+        NSString *setTitle = [NSString stringWithFormat:@"Section:%d",t];
+        [_sectionTitleArray addObject:setTitle];
+    }
+
 }
 //获取表视图的基本数据源（基本subtitle样式的数据源）不分组的
 -(void)gainBCMDataArray{
@@ -112,7 +144,7 @@
             member.mainString = @"hello ?";
             member.detailString = @"cs";
             member.isShowImage = YES;
-            member.imageName = [UIImage imageNamed:@"5"];
+            member.imageName = [UIImage imageNamed:@"3"];
         }else{
         
             member.mainString =@"hello!";
@@ -133,7 +165,7 @@
                 member.mainString = @"hello ?";
                 member.detailString = @"cs";
                 member.isShowImage = YES;
-                member.imageName = [UIImage imageNamed:@"5"];
+                member.imageName = [UIImage imageNamed:@"3"];
             }else{
                 
                 member.mainString =@"hello!";
@@ -144,8 +176,10 @@
             [itemArray addObject:member];
         }
         [_dataArray addObject:itemArray];
+        NSString *setTitle = [NSString stringWithFormat:@"Section:%d",t];
+        [_sectionTitleArray addObject:setTitle];
     }
-   
+//   _footGroupArray = @[nil,nil,]
 
 }
 #pragma mark setter methord
@@ -365,19 +399,24 @@
     if (tableView.style == UITableViewStylePlain) {
         string = @"header";
     }else{
-        NSLog(@"section:%ld",(long)section);
-//        string = [[_dataArray objectAtIndex:section] objectForKey:keyForSectionName];
-        string = @"头标题";
+        string  = [_sectionTitleArray objectAtIndex:section];
+//        string = @"头标题";
     }
     return string;
+//    return nil;
 }
 //设置表示图的尾视图的标签
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
     NSString *string = [[NSString alloc]init];
     if (tableView.style == UITableViewStylePlain) {
         string = @"footer";
+//        string = nil;
     }else{
-        string = nil;
+        if (section == [_dataArray count]-1) {
+            string = @"footer";
+        }else{
+            string = nil;
+        }
     }
     return string;
 }
@@ -494,26 +533,100 @@
     }
     return fHeight;
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    self.tableHeaderView.backgroundColor = [UIColor redColor];
-//    
-//    return 0;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    
-//    return 0;
-//}
+
+//设置头视图和尾视图的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    self.tableHeaderView.backgroundColor = [UIColor redColor];
+    if (tableView.style == UITableViewStylePlain) {
+        if (_isHeadView) {
+            return self.tHeaderView.frame.size.height;
+        }else{
+            NSString *string = [self tableView:tableView titleForHeaderInSection:section];
+            if (string) {
+                return 30;
+            }else{
+                return 0;
+            }
+            
+        }
+
+    }
+    //分组情况下对头视图的高度进行设置
+    else{
+        NSString *string = [self tableView:tableView titleForHeaderInSection:section];
+        if (string) {
+            return 30;
+        }else{
+            return 0;
+        }
+
+//        return 0;
+    }
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (tableView.style == UITableViewStylePlain) {
+        if (_isFootView) {
+            return self.tFooterView.frame.size.height;
+        }else{
+            NSString *string = [self tableView:tableView titleForFooterInSection:section];
+            if (string) {
+                return 30;
+            }else{
+                return 0;
+            }
+            
+        }
+        
+    }
+    //分组情况下对头视图的高度进行设置
+    else{
+        NSString *string = [self tableView:tableView titleForFooterInSection:section];
+        NSLog(@"string = %@",string);
+        if (string) {
+            return 21;
+        }else{
+            return 0.1;
+        }
+
+//        return 5;
+    }
+
+}
+
 //**************设置tableview的头视图
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    NSLog(@"%ld",(long)section);
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    view.backgroundColor = [UIColor blueColor];
-    return view;
+    if (tableView.style == UITableViewStylePlain) {
+        if (_isHeadView) {
+            return self.tHeaderView;
+        }else{
+            return nil;
+        }
+    }
+    else{
+        //当在分组情况下对头视图进行设置
+        return nil;
+    }
+
+    
 }
+
 //***************设置tableview的脚视图
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    
-    return nil;
+    if (tableView.style == UITableViewStylePlain) {
+        if (_isFootView) {
+            return self.tFooterView;
+        }else{
+            return nil;
+        }
+    }
+    else{
+        //当在分组情况下对头视图进行设置
+//        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+//        view.backgroundColor = [UIColor greenColor];
+//        return view;
+        return nil;
+    }
 }
 //选中状态下的代理方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

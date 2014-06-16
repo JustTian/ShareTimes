@@ -10,6 +10,9 @@
 #import "HeaderForCustoms.h"
 #import "BaseCellMember.h"
 #import "HeaderAndFooterRefresh.h"
+
+#import "FourthViewController.h"
+
 @interface FunctionViewController ()
 
 @end
@@ -115,6 +118,17 @@
                 WCustomTableView *cTableView = [array objectAtIndex:i];
                 [self addHeaderWithTableView:cTableView];
                 cTableView.myTCellSelectedBlock = ^(NSIndexPath *indexPath){
+                    if (indexPath.row == 0) {
+                        FourthViewController *fourVC = [[FourthViewController alloc]init];
+                        [self.navigationController pushViewController:fourVC animated:YES];
+                    }else if (indexPath.row == 1){
+                        NSLog(@"de er ge cell");
+                    }else{
+                        FourthViewController *fourVC = [[FourthViewController alloc]init];
+                        [self.navigationController pushViewController:fourVC animated:YES];
+
+                    }
+                    
                     NSLog(@"cell Be Selcected at %ld",(long)indexPath.row);
                 };
             }
@@ -149,7 +163,9 @@
             [itemArray addObject:member];
         }
         [dictionar setObject:itemArray forKey:keyForRowData];
-        [dictionar setObject:@"section" forKey:keyForSectionName];
+//        [dictionar setObject:@"section" forKey:keyForSectionName];
+        NSString *setTitle = [NSString stringWithFormat:@"+Section:%d",1];
+        [tableViewC.sectionTitleArray addObject:setTitle];
         [tableViewC.dataArray addObject:dictionar];
         [self performSelector:@selector(doneWithView:) withObject:refreshView afterDelay:2];
         
@@ -175,7 +191,8 @@
                 break;
         }
     };
-    [headerView beginRefreshing];
+    //是否一进界面就开始刷新
+//    [headerView beginRefreshing];
     
 }
 
