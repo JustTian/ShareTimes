@@ -119,9 +119,9 @@
                 UIEdgeInsets inset = _scrollView.contentInset;
                 inset.bottom = _scrollViewInitInset.bottom;
                 _scrollView.contentInset = inset;
-            }];
+            }];            if (animDuration == 0) {
             
-            if (animDuration == 0) {
+
                 _scrollView.contentOffset = tempOffset;
             }
 			break;

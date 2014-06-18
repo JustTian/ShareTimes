@@ -12,6 +12,7 @@
 #import "HeaderAndFooterRefresh.h"
 
 #import "FourthViewController.h"
+#import "TestM1ViewController.h"
 
 @interface FunctionViewController ()
 
@@ -34,7 +35,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor grayColor];
+    
+//    self.view.backgroundColor = [UIColor grayColor];
+    
 //    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
 //    NSString *nameJstring = @"LoginViewController.json";
 //    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameJstring];
@@ -124,9 +127,9 @@
                     }else if (indexPath.row == 1){
                         NSLog(@"de er ge cell");
                     }else{
-                        FourthViewController *fourVC = [[FourthViewController alloc]init];
-                        [self.navigationController pushViewController:fourVC animated:YES];
-
+                        TestM1ViewController *textMVC = [[TestM1ViewController alloc]init];
+                        [self.navigationController pushViewController:textMVC animated:YES];
+                        
                     }
                     
                     NSLog(@"cell Be Selcected at %ld",(long)indexPath.row);
@@ -134,6 +137,10 @@
             }
         }
     }
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+//    [self.tabBarController setHidesBottomBarWhenPushed:NO];
 }
 
 #pragma mark 表视图的头部刷新控件关联

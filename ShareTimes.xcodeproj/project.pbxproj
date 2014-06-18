@@ -26,6 +26,8 @@
 		311A33BB194A984F003A5D26 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 311A33B0194A984F003A5D26 /* AFURLRequestSerialization.m */; };
 		311A33BC194A984F003A5D26 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 311A33B2194A984F003A5D26 /* AFURLResponseSerialization.m */; };
 		311A33BD194A984F003A5D26 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 311A33B4194A984F003A5D26 /* AFURLSessionManager.m */; };
+		311B95B0194FCF9B0063559F /* TestM1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 311B95AF194FCF9B0063559F /* TestM1ViewController.m */; };
+		311B95B2194FD00E0063559F /* textM1ViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 311B95B1194FD00E0063559F /* textM1ViewController.json */; };
 		3122915A194065E900E81937 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31229159194065E900E81937 /* Foundation.framework */; };
 		3122915C194065E900E81937 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3122915B194065E900E81937 /* CoreGraphics.framework */; };
 		3122915E194065E900E81937 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3122915D194065E900E81937 /* UIKit.framework */; };
@@ -180,6 +182,9 @@
 		311A33B2194A984F003A5D26 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		311A33B3194A984F003A5D26 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		311A33B4194A984F003A5D26 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		311B95AE194FCF9B0063559F /* TestM1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestM1ViewController.h; sourceTree = "<group>"; };
+		311B95AF194FCF9B0063559F /* TestM1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestM1ViewController.m; sourceTree = "<group>"; };
+		311B95B1194FD00E0063559F /* textM1ViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textM1ViewController.json; sourceTree = "<group>"; };
 		31229156194065E900E81937 /* ShareTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31229159194065E900E81937 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3122915B194065E900E81937 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -463,6 +468,7 @@
 				31064F771945433C00AD8C55 /* usersViewController.json */,
 				31064F751945431F00AD8C55 /* LoginViewController.json */,
 				31C2AEC61946B036008D96B7 /* fourthViewController.json */,
+				311B95B1194FD00E0063559F /* textM1ViewController.json */,
 				3122916B194065E900E81937 /* Images.xcassets */,
 				31229160194065E900E81937 /* Supporting Files */,
 			);
@@ -790,10 +796,10 @@
 		3122924B19406B0600E81937 /* ControllerS */ = {
 			isa = PBXGroup;
 			children = (
+				3122924C19406B4F00E81937 /* MainViewController.h */,
 				3122924D19406B4F00E81937 /* MainViewController.m */,
 				31281716194165A600BED569 /* TabBarViewController.h */,
 				31281717194165A600BED569 /* TabBarViewController.m */,
-				3122924C19406B4F00E81937 /* MainViewController.h */,
 				31281719194165F300BED569 /* FunctionViewController.h */,
 				3128171A194165F400BED569 /* FunctionViewController.m */,
 				3128171C1941660A00BED569 /* UsersViewController.h */,
@@ -804,6 +810,8 @@
 				312817141941560C00BED569 /* RegisterViewController.m */,
 				31C2AEC31946B022008D96B7 /* FourthViewController.h */,
 				31C2AEC41946B022008D96B7 /* FourthViewController.m */,
+				311B95AE194FCF9B0063559F /* TestM1ViewController.h */,
+				311B95AF194FCF9B0063559F /* TestM1ViewController.m */,
 			);
 			name = ControllerS;
 			sourceTree = "<group>";
@@ -958,6 +966,7 @@
 				31064F7F19454E8100AD8C55 /* user_name_icon.png in Resources */,
 				31281752194169A000BED569 /* magnifying_glass_16x16.png in Resources */,
 				31064F761945431F00AD8C55 /* LoginViewController.json in Resources */,
+				311B95B2194FD00E0063559F /* textM1ViewController.json in Resources */,
 				312292221940679600E81937 /* isRead_waiting_selectButton@2x.png in Resources */,
 				312292231940679600E81937 /* mypoisition@2x.png in Resources */,
 				3128175B194169A000BED569 /* x_alt_32x32.png in Resources */,
@@ -1006,6 +1015,7 @@
 				312292431940679600E81937 /* CustomView.m in Sources */,
 				3122916A194065E900E81937 /* AppDelegate.m in Sources */,
 				311A33BD194A984F003A5D26 /* AFURLSessionManager.m in Sources */,
+				311B95B0194FCF9B0063559F /* TestM1ViewController.m in Sources */,
 				312292101940679600E81937 /* ButtonOfMapper.m in Sources */,
 				312292151940679600E81937 /* LeftTitleView.m in Sources */,
 				312292111940679600E81937 /* customButton.m in Sources */,
