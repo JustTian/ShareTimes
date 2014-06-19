@@ -36,13 +36,13 @@
 {
     [super viewDidLoad];
     //添加上一页以及下一页按钮;
-    UIView *dView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-30, self.view.frame.size.width, 30)];
+    UIView *dView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-40, self.view.frame.size.width, 40)];
     dView.backgroundColor = [UIColor grayColor];
-    UIButton *fButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 0, 40, 30)];
+    UIButton *fButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 5, 40, 30)];
     [fButton setTitle:@"shang" forState:UIControlStateNormal];
     [dView addSubview:fButton];
     
-    UIButton *sButton = [[UIButton alloc]initWithFrame:CGRectMake(270, 0, 40, 30)];
+    UIButton *sButton = [[UIButton alloc]initWithFrame:CGRectMake(270, 5, 40, 30)];
     [sButton setTitle:@"xia" forState:UIControlStateNormal];
     [dView addSubview:sButton];
     [self.view addSubview:dView];

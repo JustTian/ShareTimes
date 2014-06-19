@@ -28,6 +28,8 @@ typedef void (^MyTableViewCellUnSelectBlock) (NSIndexPath *UnSelectedIndex);
 @property (nonatomic,assign) BOOL isHeadView;
 @property (nonatomic,assign) BOOL isFootView;
 
+@property (nonatomic,retain) NSString *headerTitlePlain;
+@property (nonatomic,retain) NSString *footerTitlePlain;
 //定制响应block
 @property(nonatomic,copy) MyTableViewCellSelectionBlock myTCellSelectedBlock;
 @property(nonatomic,copy) MyTableViewCellUnSelectBlock myTCellUnSelectedBlock;

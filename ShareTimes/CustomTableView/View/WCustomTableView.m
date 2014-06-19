@@ -20,7 +20,7 @@
 
 @interface WCustomTableView (){
     WFirstCustomCell *customCell;
-
+    
 }
 
 @end
@@ -34,6 +34,12 @@
     CGRect wRect = [wcTabelView rectFromModelJSON:tableOfMapper];
     wcTabelView.frame = wRect;
     wcTabelView.isCustomCell = [tableOfMapper.isCustomCell boolValue];
+    wcTabelView.isFootView = [tableOfMapper.isCustomFooterView boolValue];
+    wcTabelView.isHeadView = [tableOfMapper.isCustomHeaderView boolValue];
+    
+//    wcTabelView.dataArray = (NSMutableArray *)tableOfMapper.dataArray;
+//    wcTabelView.sectionTitleArray = (NSMutableArray *)tableOfMapper.sectionTArray;
+
     wcTabelView.tag = [tableOfMapper.tag integerValue];
     wcTabelView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//设置分割线
     wcTabelView.allowsSelection  = YES; //cell是否可以被选择
@@ -43,22 +49,49 @@
     wcTabelView.delegate = wcTabelView;
     wcTabelView.dataSource = wcTabelView;
     //初始化头视图
-    wcTabelView.tHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
-    wcTabelView.tHeaderView.backgroundColor = [UIColor redColor];
-    
-    if (wcTabelView.isCustomCell) {
-        if (wcTabelView.style == UITableViewStylePlain) {
-            [wcTabelView gainFCMDataArray];
-        }else{
-            [wcTabelView gainFCMDataArrayForGrouped];
-        }
+    wDynamicLayout *wdLayout = [[wDynamicLayout alloc]init];
+    if (wcTabelView.isHeadView) {
+        wcTabelView.tHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, [tableOfMapper.CHeaderViewHeight floatValue])];
+//        wcTabelView.tHeaderView.backgroundColor = [UIColor grayColor];
+        [wdLayout loadItemsForGroup:tableOfMapper.cHeaderViewDic AndBaseView:wcTabelView.tHeaderView];
     }else{
-        if (wcTabelView.style == UITableViewStylePlain) {
-            [wcTabelView gainBCMDataArray];
-        }else{
-            [wcTabelView gainBCMDataArrayForGrouped];
+        wcTabelView.headerTitlePlain = tableOfMapper.hTitleForPlain;
+        if ([tableOfMapper.hTitleForPlain isEqualToString:@"nil"]) {
+            wcTabelView.headerTitlePlain = nil;
         }
     }
+    
+    if (wcTabelView.isFootView) {
+        wcTabelView.tFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, [tableOfMapper.CFooterViewHeight floatValue])];
+//        wcTabelView.tFooterView.backgroundColor = [UIColor grayColor];
+        [wdLayout loadItemsForGroup:tableOfMapper.cFooterViewDic AndBaseView:wcTabelView.tFooterView];
+    }else{
+        wcTabelView.footerTitlePlain = tableOfMapper.fTitleForPlain;
+        if ([tableOfMapper.fTitleForPlain isEqualToString:@"nil"]) {
+            wcTabelView.footerTitlePlain = nil;
+        }
+
+    }
+    //初始化cell的数据源
+    if (wcTabelView.isCustomCell) {
+        [wcTabelView gainFCMDataArray:tableOfMapper.dataArray andTableViewStyle:wcTabelView.style];
+        
+    }
+    //初始化分组表视图的分组标题
+    wcTabelView.sectionTitleArray = (NSMutableArray *)tableOfMapper.sectionTArray;
+//    if (wcTabelView.isCustomCell) {
+//        if (wcTabelView.style == UITableViewStylePlain) {
+//            [wcTabelView gainFCMDataArray];
+//        }else{
+//            [wcTabelView gainFCMDataArrayForGrouped];
+//        }
+//    }else{
+//        if (wcTabelView.style == UITableViewStylePlain) {
+//            [wcTabelView gainBCMDataArray];
+//        }else{
+//            [wcTabelView gainBCMDataArrayForGrouped];
+//        }
+//    }
     
     //    [wcTabelView gainFCMDataArray];
     return wcTabelView;
@@ -92,6 +125,53 @@
 
 #pragma mark 获取cell的数据 dataArray
 //获取表视图的数据源(第一种cell)不分组的
+-(void)gainFCMDataArray:(NSArray *)array andTableViewStyle:(UITableViewStyle)tableStyle{
+    int tCount = 1;
+    if (tableStyle != UITableViewStylePlain) {
+        tCount = (int )array.count;
+    }
+    for (int i = 0; i<tCount; i++) {
+        NSMutableArray *mArray = [[NSMutableArray alloc]init];
+        NSArray *subArray = [array objectAtIndex:i];
+        for (int j = 0; j<subArray.count; j++) {
+            NSDictionary *ldict = [subArray objectAtIndex:j];
+            NSString *keyString = [NSString stringWithFormat:@"member_%d",j];
+            NSDictionary *subDic = [ldict objectForKey:keyString];
+            
+            FirstCellMember *member = [[FirstCellMember alloc]init];
+            member.labelText = [subDic objectForKey:@"mainTitle"];
+            if ([[subDic objectForKey:@"isURLImage"] boolValue]) {
+                NSURL *urel = [NSURL URLWithString:[subDic objectForKey:@"imageURLString"]];
+                member.image = [self setImageWithURL:urel];
+            }else{
+                NSString *iString = [subDic objectForKey:@"imageName"];
+                member.image = [UIImage imageNamed:iString];
+            }
+//            NSLog(@"%@",member);
+            [mArray addObject:member];
+            
+        }
+        if (tCount>1) {
+            [_dataArray addObject:mArray];
+        }else{
+            [_dataArray addObjectsFromArray:mArray];
+        }
+    }
+}
+-(UIImage *)setImageWithURL:(NSURL *)url{
+   __block UIImage *rImage;
+    dispatch_queue_t queue = dispatch_queue_create("imageUrl", NULL);
+    dispatch_async(queue, ^{
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            rImage =image;
+            
+        });
+    });
+    return rImage;
+}
+
 -(void)gainFCMDataArray{
 //    BOOL isYes = YES;
 //    for (int i = 0; i< 6; i++) {
@@ -108,7 +188,7 @@
 //        [_dataArray addObject:member];
 //        
 //    }
-    NSArray *ttArray = @[@"第一套",@"第二套",@"第三套",@"第四套",@"第五套"];
+    NSArray *ttArray = @[@"第一套调查问卷",@"第二套调查问卷",@"第三套调查问卷",@"第四套调查问卷",@"第五套调查问卷"];
     
         for (int i = 0; i<4; i++) {
             FirstCellMember *member = [[FirstCellMember alloc]init];
@@ -121,7 +201,7 @@
 }
 //获取表视图的数据源(第一种cell)分组的
 -(void)gainFCMDataArrayForGrouped{
-    NSArray *ttArray = @[@"第一套",@"第二套",@"题目类型3",@"题目类型4",@"题目类型5"];
+    NSArray *ttArray = @[@"第一套调查问卷",@"第二套调查问卷",@"第三套调查问卷",@"第四套调查问卷",@"第五套调查问卷"];
     for (int t = 0; t<3; t++) {
         NSMutableArray *itemArray = [[NSMutableArray alloc]init];
         for (int i = 0; i<1; i++) {
@@ -397,7 +477,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     NSString *string = [[NSString alloc]init];
     if (tableView.style == UITableViewStylePlain) {
-        string = @"header";
+        string = self.headerTitlePlain;
     }else{
         string  = [_sectionTitleArray objectAtIndex:section];
 //        string = @"头标题";
@@ -409,11 +489,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
     NSString *string = [[NSString alloc]init];
     if (tableView.style == UITableViewStylePlain) {
-        string = @"footer";
+        string = self.footerTitlePlain;
 //        string = nil;
     }else{
         if (section == [_dataArray count]-1) {
-            string = @"footer";
+            string = self.footerTitlePlain;
         }else{
             string = nil;
         }

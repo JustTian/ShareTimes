@@ -23,9 +23,24 @@
 @property(nonatomic,strong) NSString *yPointOfRect;
 //定制表视图的显示类型
 @property(nonatomic,assign) UITableViewStyle tableViewStyle;
+@property (nonatomic,strong) NSArray *dataArray;//用于加载cell的数据
+
+@property (nonatomic,strong) NSArray *sectionTArray;
+
 //定制表视图是否显示自定义的tableViewCell
 @property(nonatomic,strong) NSString *isCustomCell;
 //@property(nonatomic,strong) NSString *RGB_alpha;
+
+
+@property (nonatomic,assign) NSString * isCustomHeaderView;
+@property (nonatomic,strong) NSString * CHeaderViewHeight;
+@property (nonatomic,strong) NSDictionary *cHeaderViewDic;
+@property (nonatomic,strong) NSString *hTitleForPlain;
+
+@property (nonatomic,assign) NSString * isCustomFooterView;
+@property(nonatomic,assign) NSString * CFooterViewHeight;
+@property (nonatomic,strong) NSDictionary *cFooterViewDic;
+@property (nonatomic,strong) NSString *fTitleForPlain;
 
 +(TableOfMapper *)modelObjectWithDictionary:(NSDictionary *)dictionary;
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;

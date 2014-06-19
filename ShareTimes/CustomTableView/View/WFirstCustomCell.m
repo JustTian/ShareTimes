@@ -38,7 +38,7 @@
 //        _wTestLabel.backgroundColor = [UIColor grayColor];
         
         _wImageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.origin.x+5, self.frame.origin.y+5, self.frame.size.height-10, self.frame.size.height-10)];
-        _wImageView.contentMode = UIViewContentModeCenter;
+        _wImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_wTestLabel];
         [self addSubview:_wImageView];
         //设置包含视图的基本属性

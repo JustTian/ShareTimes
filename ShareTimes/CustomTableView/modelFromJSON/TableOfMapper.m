@@ -25,6 +25,18 @@ NSString * kCGRectheight = @"TkeyCGRect_height";
 NSString * kTCStyle = @"TkeyTableViewStyle";
 NSString * kIsCustomCell = @"TkeyIsCustomCell";
 
+NSString * kIsHeaderView = @"TkeyIsHeaderView";
+NSString * kHeaderViewHeight = @"TkeyHeightForHeaderView";
+NSString * kHeaderVDic = @"TkeyHeaderViewDic";
+NSString * kHTitleString = @"TkeyHeaderTitlePlain";
+NSString * kIsFootreView = @"TkeyIsFooterView";
+NSString * kFooterViewHeight =@"TkeyHeightForFooterView";
+NSString * kFooterVDic = @"TkeyFooterViewDic";
+NSString * kFTitleString = @"TkeyFooterTitlePlain";
+
+NSString * kDataArray = @"TkeyDataArray";
+NSString * kSectionArray = @"TkeySectionArray";
+
 @interface TableOfMapper ()
 @property(nonatomic,strong)CountString *countSting;
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
@@ -70,6 +82,24 @@ NSString * kIsCustomCell = @"TkeyIsCustomCell";
         self.tableViewStyle =[self tableViewStyleFromJSON:wInteger];
         
         self.isCustomCell = [self objectOrNilForKey:kIsCustomCell fromDictionary:dictionary];
+        
+        self.dataArray = [self objectOrNilForKey:kDataArray fromDictionary:dictionary];
+        self.sectionTArray = [self objectOrNilForKey:kSectionArray fromDictionary:dictionary];
+        
+        self.isCustomHeaderView = [self objectOrNilForKey:kIsHeaderView fromDictionary:dictionary];
+        NSString *hvString = [_countSting getStatement:[self objectOrNilForKey:kHeaderViewHeight fromDictionary:dictionary]];
+        CGFloat hv_h =[_countSting operatorString:hvString];
+        self.CHeaderViewHeight = [NSString stringWithFormat:@"%f",hv_h];
+        self.cHeaderViewDic = [self objectOrNilForKey:kHeaderVDic fromDictionary:dictionary];
+        self.hTitleForPlain = [self objectOrNilForKey:kHTitleString fromDictionary:dictionary];
+        
+        self.isCustomFooterView = [self objectOrNilForKey:kIsFootreView fromDictionary:dictionary];
+        NSString *fvString = [_countSting getStatement:[self objectOrNilForKey:kFooterViewHeight fromDictionary:dictionary]];
+        CGFloat fv_h =[_countSting operatorString:fvString];
+        self.CFooterViewHeight = [NSString stringWithFormat:@"%f",fv_h];
+        self.cFooterViewDic = [self objectOrNilForKey:kFooterVDic fromDictionary:dictionary];
+        self.fTitleForPlain = [self objectOrNilForKey:kFTitleString fromDictionary:dictionary];
+        
     }
     return self;
 }
@@ -88,6 +118,17 @@ NSString * kIsCustomCell = @"TkeyIsCustomCell";
     [mutableDict setValue:self.RGB_alpha forKey:kColorRGB_alpha];
     [mutableDict setValue:[NSNumber numberWithInteger:self.tableViewStyle] forKey:kTCStyle];
     [mutableDict setObject:self.isCustomCell forKey:kIsCustomCell];
+    
+    [mutableDict setObject:self.dataArray forKey:kDataArray];
+    [mutableDict setObject:self.sectionTArray forKey:kSectionArray];
+    
+    [mutableDict setObject:self.isCustomHeaderView forKey:kIsHeaderView];
+    [mutableDict setObject:self.cHeaderViewDic forKey:kHeaderVDic];
+    [mutableDict setObject:self.hTitleForPlain forKey:kHTitleString];
+    
+    [mutableDict setObject:self.isCustomFooterView forKey:kIsFootreView];
+    [mutableDict setObject:self.cFooterViewDic forKey:kFooterVDic];
+    [mutableDict setObject:self.fTitleForPlain forKey:kFTitleString];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
