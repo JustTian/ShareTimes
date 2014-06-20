@@ -47,7 +47,7 @@
 //    NSDictionary *ldic = [dynamicLayout getItemsOfGroup:lDictionary];//直接调用解析的json文件的第一个字典----返回所有控件的tag值与类型的字典
 //    NSLog(@"***************%@",ldic);
     
-    
+    //从本地json文件加载
     wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
     
     NSString *nameString = @"functionViewController.json";
@@ -56,6 +56,27 @@
     
     NSDictionary *lDic = [dynamicLayout getItemsOfGroup:lDictionary];
     NSLog(@"控件：%@",lDic);
+    //从网络获取加载
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSDictionary *ldicionary = [[NSDictionary alloc]init];
+//        NSString *lstring = @"http://m.weather.com.cn/data/101010100.html";
+        NSString *lurlString = [NSString stringWithFormat:@"http://192.168.1.85/es/server/esservice.ashx?op=getallprojects&data={\"UserID\":21}"];
+        NSURL *url = [NSURL URLWithString:lurlString];
+        NSData *ldata = [NSData dataWithContentsOfURL:url];
+        if (ldata == nil) {
+            NSLog(@"获取失败");
+        }else{
+            ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
+            
+        }
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSLog(@"ldictionary:%@",ldicionary);
+        });
+        
+    });
+//    AFHTTPRequestOperation *opration = [AFHTTPRequestOperation ]
+//    AFJSONRequestSerializer *operation = [AFJSONRequestSerializer jso]
+    
 //
 //    /*
 //     *

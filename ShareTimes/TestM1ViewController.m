@@ -82,7 +82,7 @@
             }
         }
     }
-    selectView = [addIVArray objectAtIndex:0];
+//    selectView = [addIVArray objectAtIndex:0];
     
     [self cScrollerViewClick:scrollViewArray];
 }
@@ -127,8 +127,8 @@
         [UIView animateWithDuration:1.0 animations:^{
             fScrollView.frame = CGRectMake(0, 0, 320+320-imageVRect.size.width, self.view.frame.size.height);
             fScrollView.backgroundColor = [UIColor clearColor];
-            
-          limageV.frame = self.view.frame;
+//            [fScrollView setContentOffset:CGPointMake(limageV.frame.origin.x-110, 0) animated:YES];
+            limageV.frame = self.view.frame;
             [self.navigationController setNavigationBarHidden:YES];
         
         }];

@@ -76,9 +76,11 @@
     if (wcTabelView.isCustomCell) {
         [wcTabelView gainFCMDataArray:tableOfMapper.dataArray andTableViewStyle:wcTabelView.style];
         
+    }else{
+        [wcTabelView gainBCMDataArray:tableOfMapper.dataArray andTableViewStyle:wcTabelView.style];
     }
     //初始化分组表视图的分组标题
-    wcTabelView.sectionTitleArray = (NSMutableArray *)tableOfMapper.sectionTArray;
+    wcTabelView.sectionTitleArray = [NSMutableArray arrayWithArray:tableOfMapper.sectionTArray];
 //    if (wcTabelView.isCustomCell) {
 //        if (wcTabelView.style == UITableViewStylePlain) {
 //            [wcTabelView gainFCMDataArray];
@@ -141,13 +143,23 @@
             FirstCellMember *member = [[FirstCellMember alloc]init];
             member.labelText = [subDic objectForKey:@"mainTitle"];
             if ([[subDic objectForKey:@"isURLImage"] boolValue]) {
+                
                 NSURL *urel = [NSURL URLWithString:[subDic objectForKey:@"imageURLString"]];
-                member.image = [self setImageWithURL:urel];
+                dispatch_queue_t queue = dispatch_queue_create("imageUrl", NULL);
+                dispatch_async(queue, ^{
+                    NSData *data = [NSData dataWithContentsOfURL:urel];
+                    UIImage *image = [UIImage imageWithData:data];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        member.image =image;//异步请求完数据后只对数据进行了添加，所以必须调用重载方法完成界面的更新
+                        [self reloadData];
+                    });
+                });
+//                NSLog(@"member.image:%@",member.image);
             }else{
                 NSString *iString = [subDic objectForKey:@"imageName"];
                 member.image = [UIImage imageNamed:iString];
             }
-//            NSLog(@"%@",member);
+            NSLog(@"%@",member);
             [mArray addObject:member];
             
         }
@@ -158,8 +170,56 @@
         }
     }
 }
+-(void)gainBCMDataArray:(NSArray *)array andTableViewStyle:(UITableViewStyle )tableStyle{
+    int tCount = 1;
+    if (tableStyle != UITableViewStylePlain) {
+        tCount = (int )array.count;
+    }
+    for (int i = 0; i<tCount; i++) {
+        NSMutableArray *mArray = [[NSMutableArray alloc]init];
+        NSArray *subArray = [array objectAtIndex:i];
+        for (int j = 0; j<subArray.count; j++) {
+            NSDictionary *ldict = [subArray objectAtIndex:j];
+            NSString *keyString = [NSString stringWithFormat:@"member_%d",j];
+            NSDictionary *subDic = [ldict objectForKey:keyString];
+            
+            BaseCellMember *member = [[BaseCellMember alloc]init];
+            member.mainString = [subDic objectForKey:@"mainTitle"];
+            member.detailString = [subDic objectForKey:@"subTitle"];
+//            member.detailString = @"副标题";
+            if ([[subDic objectForKey:@"isURLImage"] boolValue]) {
+                
+                NSURL *urel = [NSURL URLWithString:[subDic objectForKey:@"imageURLString"]];
+                dispatch_queue_t queue = dispatch_queue_create("imageUrl", NULL);
+                dispatch_async(queue, ^{
+                    NSData *data = [NSData dataWithContentsOfURL:urel];
+                    UIImage *image = [UIImage imageWithData:data];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        member.imageName =image;//异步请求完数据后只对数据进行了添加，所以必须调用重载方法完成界面的更新
+                        [self reloadData];
+                    });
+                });
+                //                NSLog(@"member.image:%@",member.image);
+            }else{
+                NSString *iString = [subDic objectForKey:@"imageName"];
+                member.imageName = [UIImage imageNamed:iString];
+            }
+            NSLog(@"%@",member);
+            [mArray addObject:member];
+            
+        }
+        if (tCount>1) {
+            [_dataArray addObject:mArray];
+        }else{
+            [_dataArray addObjectsFromArray:mArray];
+        }
+    }
+
+}
+//异步加载图片方法
 -(UIImage *)setImageWithURL:(NSURL *)url{
-   __block UIImage *rImage;
+    UIImage *subImage = [[UIImage alloc]init];
+   __block UIImage *rImage = subImage;
     dispatch_queue_t queue = dispatch_queue_create("imageUrl", NULL);
     dispatch_async(queue, ^{
         NSData *data = [NSData dataWithContentsOfURL:url];
@@ -355,7 +415,7 @@
         
         
         if(wcCell==nil){
-            wcCell=[[WBaseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIn];
+            wcCell=[[WBaseTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIn];
             wcCell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
         if (tableView.style == UITableViewStylePlain) {
@@ -662,7 +722,7 @@
     //分组情况下对头视图的高度进行设置
     else{
         NSString *string = [self tableView:tableView titleForFooterInSection:section];
-        NSLog(@"string = %@",string);
+//        NSLog(@"string = %@",string);
         if (string) {
             return 21;
         }else{

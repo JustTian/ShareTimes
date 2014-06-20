@@ -15,6 +15,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+//        self.imageView.frame = CGRectMake(self.frame.origin.x+5, self.frame.origin.y+5, self.frame.size.height-10, self.frame.size.height-10);
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return self;
 }
@@ -29,7 +31,8 @@
     _baseMember = baseMember;
     self.textLabel.text = baseMember.mainString;
     self.detailTextLabel.text = baseMember.detailString;
-    if (baseMember.isShowImage) {
+    if (baseMember.imageName) {
+//        self.imageView.frame = CGRectMake(self.frame.origin.x+5, self.frame.origin.y+5, self.frame.size.height-10, self.frame.size.height-10);
         self.imageView.image = baseMember.imageName;
     }
 }
