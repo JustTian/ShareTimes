@@ -36,6 +36,8 @@
 @property(nonatomic,strong) NSString *rightViewName;
 @property(nonatomic,strong) NSString *rightViewMode;
 
+@property (nonatomic,strong) NSString *isCustomLeftView;
+@property (nonatomic,strong) NSString *isCustomRightView;
 
 +(TextFieldOfMapper *)modelObjectWithDictionary:(NSDictionary *)dictionary;
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;

@@ -38,7 +38,9 @@
         wTextField.leftView = view;
         wTextField.leftViewMode = [wTextField textFieldViewModeFromJSON:[textMapper.leftViewMode integerValue]];
     }else{
-    
+        if ([textMapper.isCustomLeftView boolValue]) {
+             //
+        }
         NSLog(@"没有设置leftview");
     }
     //设置文本视图的右视图
@@ -54,26 +56,31 @@
         wTextField.rightView = view;
         wTextField.rightViewMode = [wTextField textFieldViewModeFromJSON:[textMapper.rightViewMode integerValue]];
     }else{
-        NSLog(@"自定义rightview");
-        UIView *rView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 40)];
-        CustomSwitch *cSwitch = [[CustomSwitch alloc]initWithFrame:CGRectMake(0, 10, 40, 20)];
-        cSwitch.onColor = [UIColor blueColor];
-        cSwitch.on = NO;
-        cSwitch.switchBlock = ^(CustomSwitch *cuSwitch){
-            if (cuSwitch.on) {
-                NSLog(@"selected"); 
-                wTextField.secureTextEntry = NO;
-            }else{
-                NSLog(@"unSelected");
-                wTextField.secureTextEntry = YES;
-            }
-        };
-//        [cSwitch addTarget:cSwitch action:@selector(cswitchClick:) forControlEvents:UIControlEventValueChanged];
-        [rView addSubview:cSwitch];
-        
-//         = wTextField;
-        wTextField.rightView = rView;
-        wTextField.rightViewMode = UITextFieldViewModeAlways;
+        if ([textMapper.isCustomRightView boolValue]) {
+            NSLog(@"自定义rightview");
+            UIView *rView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 40)];
+            CustomSwitch *cSwitch = [[CustomSwitch alloc]initWithFrame:CGRectMake(0, 10, 40, 20)];
+            cSwitch.onColor = [UIColor blueColor];
+            cSwitch.on = NO;
+            cSwitch.switchBlock = ^(CustomSwitch *cuSwitch){
+                if (cuSwitch.on) {
+                    NSLog(@"selected");
+                    wTextField.secureTextEntry = NO;
+                }else{
+                    NSLog(@"unSelected");
+                    wTextField.secureTextEntry = YES;
+                }
+            };
+            //        [cSwitch addTarget:cSwitch action:@selector(cswitchClick:) forControlEvents:UIControlEventValueChanged];
+            [rView addSubview:cSwitch];
+            
+            //         = wTextField;
+            wTextField.rightView = rView;
+            wTextField.rightViewMode = UITextFieldViewModeAlways;
+        }
+        else{
+            //
+        }
         
     }
     

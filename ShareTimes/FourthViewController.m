@@ -36,7 +36,9 @@
     
     // Do any additional setup after loading the view.
     wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
-    NSString *nameJstring = @"fourthViewController.json";
+//    NSString *nameJstring = @"fourthViewController.json";
+//    NSString *nameJstring = @"textViewController.json";
+    NSString *nameJstring = @"voiceViewController.json";
     NSDictionary *lDictionary = [self dictionaryFromJSONName:nameJstring];
     //利用载入类描绘出视图界面
     [dynamicLayout drawingInterfaceFromJSONName:nameJstring AndBaseView:self.view];
@@ -47,11 +49,13 @@
     NSArray *widgetArray = [dynamicLayout instanceCustomButtonFromDic:ldic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
     [self customButtonClick:widgetArray];//执行响应的响应事件
     self.comomArray = widgetArray;
-    
-    
+
     NSArray *customViewArray = [dynamicLayout instanceCustomViewFromDic:ldic AndSupperView:self.view];
     [self customViewClick:customViewArray];
     
+    //取出文本视图
+    NSArray *textFieldArray = [dynamicLayout instanceTextFieldFromDic:ldic AndSupperView:self.view];
+    [self customTextFieldClick:textFieldArray];
     
     //取出label数组
     self.cLabelArray = [dynamicLayout instanceCustomLabelFromDic:ldic AndSupperView:self.view];

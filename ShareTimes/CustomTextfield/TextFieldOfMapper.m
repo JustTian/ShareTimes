@@ -36,6 +36,9 @@ NSString *const kTextFieldLVM =@"TkeyLeftViewMode";
 NSString *const kTextFieldRVN = @"TkeyRightViewName";
 NSString *const kTextFieldRVM =@"TkeyRightViewMode";
 
+NSString *const kTextFieldIRV= @"TkeyIsCustomRightView";
+NSString *const kTextFieldILV = @"TkeyIsCustomLeftView";
+
 @interface TextFieldOfMapper ()
 @property(nonatomic,strong)CountString *countSting;
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
@@ -93,6 +96,8 @@ NSString *const kTextFieldRVM =@"TkeyRightViewMode";
         self.rightViewName = [self objectOrNilForKey:kTextFieldRVN fromDictionary:dictionary];
         self.rightViewMode = [self objectOrNilForKey:kTextFieldRVM fromDictionary:dictionary];
         
+        self.isCustomLeftView = [self objectOrNilForKey:kTextFieldILV fromDictionary:dictionary];
+        self.isCustomRightView = [self objectOrNilForKey:kTextFieldIRV fromDictionary:dictionary];
     }
     return self;
 }
@@ -123,6 +128,9 @@ NSString *const kTextFieldRVM =@"TkeyRightViewMode";
     [mutableDict setValue:self.leftViewMode forKey:kTextFieldLVM];
     [mutableDict setValue:self.rightViewName forKey:kTextFieldRVN];
     [mutableDict setValue:self.rightViewMode forKey:kTextFieldRVM];
+    
+    [mutableDict setValue:self.isCustomLeftView forKeyPath:kTextFieldILV];
+    [mutableDict setValue:self.isCustomRightView forKeyPath:kTextFieldIRV];
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
