@@ -1,16 +1,15 @@
 //
-//  TestM1ViewController.m
+//  PictureViewController.m
 //  ShareTimes
 //
-//  Created by 传晟 on 14-6-16.
+//  Created by WZHEN on 14-6-23.
 //  Copyright (c) 2014年 传晟. All rights reserved.
 //
 
-#import "TestM1ViewController.h"
+#import "PictureViewController.h"
 #import "HeaderForCustoms.h"
-#import "FourthViewController.h"
 
-@interface TestM1ViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate>
+@interface PictureViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate>
 {
     BOOL isScreen;//判断点击后是否加载满屏
     CGRect imageVRect;//记录图片视图变化前的大小
@@ -21,7 +20,10 @@
 
 @end
 
-@implementation TestM1ViewController
+@implementation PictureViewController{
+    NSMutableData *ldata;
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,45 +35,60 @@
     return self;
 }
 
+//地角事件监听
+-(void)fButtonClick:(UIButton *)sender{
+    //    FourthViewController *fVC = [[FourthViewController alloc]init];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+-(void)sButtonClick:(UIButton *)sender{
+    //    FourthViewController *fVC = [[FourthViewController alloc]init];
+    //    [self.navigationController pushViewController:fVC animated:YES];
+    //    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    ldata = [[NSMutableData alloc]init];
+    addIVArray = [[NSMutableArray alloc]init];
+    
     //添加上一页以及下一页按钮;
     UIView *dView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-40, self.view.frame.size.width, 40)];
     dView.backgroundColor = [UIColor grayColor];
     UIButton *fButton = [[UIButton alloc]initWithFrame:CGRectMake(20, 10, 20, 20)];
     [fButton setBackgroundImage:[UIImage imageNamed:@"retreat"] forState:UIControlStateNormal];
     [fButton addTarget:self action:@selector(fButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [fButton setTitle:@"shang" forState:UIControlStateNormal];
+    //    [fButton setTitle:@"shang" forState:UIControlStateNormal];
     [dView addSubview:fButton];
     
     UIButton *sButton = [[UIButton alloc]initWithFrame:CGRectMake(280, 10, 20, 20)];
-//    [sButton setTitle:@"xia" forState:UIControlStateNormal];
+    //    [sButton setTitle:@"xia" forState:UIControlStateNormal];
     [sButton setBackgroundImage:[UIImage imageNamed:@"advance"] forState:UIControlStateNormal];
     [sButton addTarget:self action:@selector(sButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [dView addSubview:sButton];
     [self.view addSubview:dView];
-    
-    
-    addIVArray = [[NSMutableArray alloc]init];
-    
+
     // Do any additional setup after loading the view.
-    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
-    NSString *nameJstring = @"textM1ViewController.json";
-    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameJstring];
-    //利用载入类描绘出视图界面
-    [dynamicLayout drawingInterfaceFromJSONName:nameJstring AndBaseView:self.view];
     
-    NSDictionary *ldic = [dynamicLayout getItemsOfGroup:lDictionary];//直接调用解析的json文件的第一个字典----返回所有控件的tag值与类型的字典
-    NSLog(@"***************%@",ldic);
-    NSArray *widgetArray = [dynamicLayout instanceCustomButtonFromDic:ldic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
-    [self customButtonClick:widgetArray];//执行响应的响应事件
+    //    self.view.backgroundColor = [UIColor grayColor];
+    
+    //从本地json文件加载
+    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
+    
+    NSString *nameString = @"pictureViewController.json";
+    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameString];
+    [dynamicLayout drawingInterfaceFromJSONName:nameString AndBaseView:self.view];
+    
+    NSDictionary *lDic = [dynamicLayout getItemsOfGroup:lDictionary];
+    NSLog(@"控件：%@",lDic);
+    NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
+    [self customButtonClick:cArray];//执行响应的响应事件
     
     //给图片视图添加点击事件
-    NSArray *imageVArray = [dynamicLayout instanceCImageViewFromDic:ldic AndSupperView:self.view];
+    NSArray *imageVArray = [dynamicLayout instanceCImageViewFromDic:lDic AndSupperView:self.view];
     [self imageViewAddClick:imageVArray];
     
-    NSArray *scrollViewArray = [dynamicLayout instanceCustomScrollViewFromDic:ldic AndSupperView:self.view];
+    NSArray *scrollViewArray = [dynamicLayout instanceCustomScrollViewFromDic:lDic AndSupperView:self.view];
     
     for (int i =0; i<scrollViewArray.count; i++) {
         if ([[scrollViewArray objectAtIndex:i]isKindOfClass:[CustomScrollerView class]]){
@@ -87,21 +104,58 @@
             }
         }
     }
-//    selectView = [addIVArray objectAtIndex:0];
+    //    selectView = [addIVArray objectAtIndex:0];
     
     [self cScrollerViewClick:scrollViewArray];
+    //从网络获取加载
+    //    NSString *lstr = @"op=getallprojects&data={\"UserID\":\"21\"}";
+    //    NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
+    //    NSURL *lurl = [NSURL URLWithString:string];
+    //    NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
+    //    [lmutableURLRequest setHTTPMethod:@"post"];
+    //    [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
+    //    NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+    //    [lURLConnection start];
+    
+    
+    /*
+     *
+     *此后主要时取出实例化控件并做事件响应处理
+     *
+     */
+    
+    //通过tag值取出实例化的控件
+    //    NSArray *buttonArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];
+    //取出的实例化控件添加响应方法
+    //    [self customButtonClick:buttonArray]
+    
 }
 
-//地角事件监听
--(void)fButtonClick:(UIButton *)sender{
-//    FourthViewController *fVC = [[FourthViewController alloc]init];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    [ldata setLength:0];
 }
--(void)sButtonClick:(UIButton *)sender{
-    FourthViewController *fVC = [[FourthViewController alloc]init];
-    [self.navigationController pushViewController:fVC animated:YES];
-//    [self.navigationController popViewControllerAnimated:YES];
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [ldata appendData:data];
 }
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
+    //    NSLog(@"54556%@",ldicionary);
+    if (![[ldicionary objectForKey:@"status"]isEqualToString:@"failure"]) {
+        wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
+        [dynamicLayout drawingInterfaceFromURLDictionary:ldicionary AndBaseView:self.view];
+        
+        NSDictionary *lDic = [dynamicLayout getItemsOfGroup:ldicionary];
+        NSLog(@"控件：%@",lDic);
+        NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
+        [self customButtonClick:cArray];//执行响应的响应事件
+        
+    }else{
+        UIAlertView *alerVIEW = [[UIAlertView alloc]initWithTitle:@"提示" message:@"获取数据失败" delegate:self cancelButtonTitle:@"cancle" otherButtonTitles: nil];
+        [alerVIEW show];
+    }
+    
+}
+
 -(void)imageViewAddClick:(NSArray *)array{
     if (array.count) {
         for (int i =0; i<array.count; i++) {
@@ -111,26 +165,26 @@
                 if (cIView.tag == 10001) {
                     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
                     [cIView addGestureRecognizer:tapGesture];
-
+                    
                 }else{
                     UITapGestureRecognizer *lTapgesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Tap:)];
                     //                lTapgesture.numberOfTapsRequired = 2;
                     lTapgesture.numberOfTouchesRequired = 1;
                     [cIView addGestureRecognizer:lTapgesture];
                 }
-
+                
             }
         }
         
     }
-
+    
 }
 
 -(void)Tap:(UITapGestureRecognizer *)sender{
-//    NSLog(@"top  %@",sender.view);
-
-     UIImageView *limageV = (CImageVIew *)sender.view;
-//    selectView = (CImageVIew *)limageV;
+    //    NSLog(@"top  %@",sender.view);
+    
+    UIImageView *limageV = (CImageVIew *)sender.view;
+    //    selectView = (CImageVIew *)limageV;
     if (!isScreen) {
         for (int i=0; i<fScrollView.subviews.count; i++) {
             if (![[fScrollView.subviews objectAtIndex:i]isEqual:limageV]) {
@@ -143,10 +197,10 @@
         [UIView animateWithDuration:1.0 animations:^{
             fScrollView.frame = CGRectMake(0, 0, 320+320-imageVRect.size.width, self.view.frame.size.height);
             fScrollView.backgroundColor = [UIColor clearColor];
-//            [fScrollView setContentOffset:CGPointMake(limageV.frame.origin.x-110, 0) animated:YES];
+            //            [fScrollView setContentOffset:CGPointMake(limageV.frame.origin.x-110, 0) animated:YES];
             limageV.frame = self.view.frame;
             [self.navigationController setNavigationBarHidden:YES];
-        
+            
         }];
         isScreen = YES;
     }else{
@@ -155,7 +209,7 @@
             fScrollView.backgroundColor = [UIColor colorWithRed:115/255.0 green:250/255.0 blue:250/255.0 alpha:1.0];
             
             limageV.frame = imageVRect;
-//            limageV.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            //            limageV.transform = CGAffineTransformMakeScale(1.0, 1.0);
             [fScrollView setContentOffset:CGPointMake(limageV.frame.origin.x-110, 0) animated:YES];
             [self.navigationController setNavigationBarHidden:NO];
             
@@ -165,16 +219,16 @@
                 
             }
         }];
-
+        
         imageVRect = self.view.frame;
         isScreen = NO;
     }
-   
-//    limageV.transform = CGAffineTransformMakeScale(4.5, 4.5);
+    
+    //    limageV.transform = CGAffineTransformMakeScale(4.5, 4.5);
     
 }
 -(void)tapClick{
-     UIImageView *addView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 70, 70)];
+    UIImageView *addView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 70, 70)];
     addView.userInteractionEnabled = YES;
     
     UITapGestureRecognizer *lTapgesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Tap:)];
@@ -201,7 +255,7 @@
         ltransition.delegate = self;
         [ltransition setType:@"rippleEffect"];
         [ltransition setSubtype:kCATransitionFromLeft];
-      
+        
         UIImageView *addView = [addIVArray objectAtIndex:0];
         [addView.layer addAnimation:ltransition forKey:@"animation"];
         addView.image=limage;
@@ -226,7 +280,7 @@
         [fScrollView addSubview:iv];
     }
     fScrollView.contentSize = CGSizeMake(addIVArray.count<3?320:addIVArray.count*100+110, 100);
-
+    
 }
 -(void)customButtonClick:(NSArray *)array{
     if (array.count) {
@@ -256,7 +310,7 @@
                         selectView = [addIVArray objectAtIndex:0];
                     }
                     if (cB.clickOfType == 1) {
-                       
+                        
                     }
                     NSLog(@"____________%@",[cB class]);
                 };
@@ -287,7 +341,7 @@
 //滚动视图将要开始拖动drag拖动
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     if (selectView != nil) {
-//        selectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        //        selectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
         [UIView animateWithDuration:0.5 animations:^{
             selectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
             
@@ -308,11 +362,11 @@
     int offset=(int)scrollView.contentOffset.x%100;
     int value=(int)scrollView.contentOffset.x/100;
     if (offset == 0) {
-//        selectView=[addIVArray objectAtIndex:value];
-//        [UIView animateWithDuration:1.0 animations:^{
-//            selectView.transform=CGAffineTransformMakeScale(1.25, 1.25);
-//            
-//        }];
+        //        selectView=[addIVArray objectAtIndex:value];
+        //        [UIView animateWithDuration:1.0 animations:^{
+        //            selectView.transform=CGAffineTransformMakeScale(1.25, 1.25);
+        //
+        //        }];
     }else if (offset<50){
         [scrollView setContentOffset:CGPointMake(100*value, scrollView.contentOffset.y) animated:YES];
     }else{
@@ -322,12 +376,12 @@
 
 //UIScrollView惯性运动结束
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-//    NSLog(@"scrollView.x = %f",scrollView.contentOffset.x);
-//    NSLog(@"%lu",(unsigned long)addIVArray.count);
+    //    NSLog(@"scrollView.x = %f",scrollView.contentOffset.x);
+    //    NSLog(@"%lu",(unsigned long)addIVArray.count);
     
     int value=(int)scrollView.contentOffset.x/100;
     selectView=[addIVArray objectAtIndex:value];
-//    selectView.transform=CGAffineTransformMakeScale(1.25, 1.25);
+    //    selectView.transform=CGAffineTransformMakeScale(1.25, 1.25);
     [UIView animateWithDuration:1.0 animations:^{
         selectView.transform=CGAffineTransformMakeScale(1.25, 1.25);
         
@@ -339,18 +393,17 @@
     int offset=(int)scrollView.contentOffset.x%100;
     int value=(int)scrollView.contentOffset.x/100;
     if (offset==0) {
-//        selectView=[addIVArray objectAtIndex:value];
-//        [UIView animateWithDuration:1.0 animations:^{
-//            selectView.transform=CGAffineTransformMakeScale(1.25, 1.25);
-//            
-//        }];
+        //        selectView=[addIVArray objectAtIndex:value];
+        //        [UIView animateWithDuration:1.0 animations:^{
+        //            selectView.transform=CGAffineTransformMakeScale(1.25, 1.25);
+        //
+        //        }];
     }else if(offset<50){
         [scrollView setContentOffset:CGPointMake(100*value, scrollView.contentOffset.y) animated:YES];
     }else{
         [scrollView setContentOffset:CGPointMake(100*(value+1), scrollView.contentOffset.y) animated:YES];
     }
 }
-
 
 - (void)didReceiveMemoryWarning
 {

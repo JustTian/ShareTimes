@@ -51,12 +51,12 @@
     [userVC setTabBarItem:imageViewItem3];
     UINavigationController *userNVC = [[UINavigationController alloc]initWithRootViewController:userVC];
     
-    FourthViewController *fuserVC = [[FourthViewController alloc]init];
-    UITabBarItem *imageViewItem4 = [[UITabBarItem alloc]initWithTitle:@"测试题" image:[UIImage imageNamed:@"isRead_selectedButton@2x"] tag:10];
-    [fuserVC setTabBarItem:imageViewItem4];
-    UINavigationController *fuserNVC = [[UINavigationController alloc]initWithRootViewController:fuserVC];
+//    FourthViewController *fuserVC = [[FourthViewController alloc]init];
+//    UITabBarItem *imageViewItem4 = [[UITabBarItem alloc]initWithTitle:@"测试题" image:[UIImage imageNamed:@"isRead_selectedButton@2x"] tag:10];
+//    [fuserVC setTabBarItem:imageViewItem4];
+//    UINavigationController *fuserNVC = [[UINavigationController alloc]initWithRootViewController:fuserVC];
 
-    NSArray *items = @[mainNVC,funNVC,userNVC,fuserNVC];
+    NSArray *items = @[mainNVC,funNVC,userNVC];
     
     //这里设置代理控制是否有用户登录
     self.delegate = self;

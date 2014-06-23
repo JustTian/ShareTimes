@@ -13,6 +13,7 @@
 #import "FirstCellMember.h"
 #import "BaseCellMember.h"
 #import "TableOfMapper.h"
+#import "WSecondTableViewCell.h"
 
 //注意此处的关键字用于取出每个分组的数据
 #define keyForRowData @"rowItems"

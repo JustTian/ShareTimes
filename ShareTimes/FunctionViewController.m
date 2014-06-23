@@ -14,6 +14,12 @@
 #import "FourthViewController.h"
 #import "TestM1ViewController.h"
 
+
+#import "SelectViewController.h"
+#import "PictureViewController.h"
+#import "VoiceViewController.h"
+#import "TextViewController.h"
+
 @interface FunctionViewController ()
 
 @end
@@ -40,28 +46,29 @@
 //    self.view.backgroundColor = [UIColor grayColor];
     
     //从本地json文件加载
-//    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
-//    
-//    NSString *nameString = @"functionViewController.json";
-//    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameString];
-//    [dynamicLayout drawingInterfaceFromJSONName:nameString AndBaseView:self.view];
-//    
-//    NSDictionary *lDic = [dynamicLayout getItemsOfGroup:lDictionary];
-//    NSLog(@"控件：%@",lDic);
-//    NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
-//    [self customButtonClick:cArray];//执行响应的响应事件
-//    
-//    NSArray *tabelViewArray = [dynamicLayout instanceCustomTabelViewFromDic:lDic AndSupperView:self.view];
-//    [self customTableViewClick:tabelViewArray];
+    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
+    
+    NSString *nameString = @"functionViewController.json";
+    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameString];
+    [dynamicLayout drawingInterfaceFromJSONName:nameString AndBaseView:self.view];
+    
+    NSDictionary *lDic = [dynamicLayout getItemsOfGroup:lDictionary];
+    NSLog(@"控件：%@",lDic);
+    NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
+    [self customButtonClick:cArray];//执行响应的响应事件
+    
+    NSArray *tabelViewArray = [dynamicLayout instanceCustomTabelViewFromDic:lDic AndSupperView:self.view];
+    [self customTableViewClick:tabelViewArray];
+    
     //从网络获取加载
-    NSString *lstr = @"op=getallprojects&data={\"UserID\":\"21\"}";
-    NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
-    NSURL *lurl = [NSURL URLWithString:string];
-    NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
-    [lmutableURLRequest setHTTPMethod:@"post"];
-    [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
-    [lURLConnection start];
+//    NSString *lstr = @"op=getallprojects&data={\"UserID\":\"21\"}";
+//    NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
+//    NSURL *lurl = [NSURL URLWithString:string];
+//    NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
+//    [lmutableURLRequest setHTTPMethod:@"post"];
+//    [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+//    [lURLConnection start];
 
 
     /*
@@ -151,14 +158,24 @@
                 [self addHeaderWithTableView:cTableView];
                 cTableView.myTCellSelectedBlock = ^(NSIndexPath *indexPath){
                     if (indexPath.row == 0) {
-                        FourthViewController *fourVC = [[FourthViewController alloc]init];
-                        [self.navigationController pushViewController:fourVC animated:YES];
+                        SelectViewController *sVC = [[SelectViewController alloc]init];
+                        [self.navigationController pushViewController:sVC animated:YES];
+//                        FourthViewController *fourVC = [[FourthViewController alloc]init];
+//                        [self.navigationController pushViewController:fourVC animated:YES];
                     }else if (indexPath.row == 1){
-                        TestM1ViewController *textMVC = [[TestM1ViewController alloc]init];
-                        [self.navigationController pushViewController:textMVC animated:YES];
-                    }else{
-                        TestM1ViewController *textMVC = [[TestM1ViewController alloc]init];
-                        [self.navigationController pushViewController:textMVC animated:YES];
+                        PictureViewController *pVC = [[PictureViewController alloc]init];
+                        [self.navigationController pushViewController:pVC animated:YES];
+//                        TestM1ViewController *textMVC = [[TestM1ViewController alloc]init];
+//                        [self.navigationController pushViewController:textMVC animated:YES];
+                    }else if (indexPath.row == 2){
+                        VoiceViewController *vVC = [[VoiceViewController alloc]init];
+                        [self.navigationController pushViewController:vVC animated:YES];
+                    }
+                    else{
+                        TextViewController *tVC = [[TextViewController alloc]init];
+                        [self.navigationController pushViewController:tVC animated:YES];
+//                        TestM1ViewController *textMVC = [[TestM1ViewController alloc]init];
+//                        [self.navigationController pushViewController:textMVC animated:YES];
                         
                     }
                     

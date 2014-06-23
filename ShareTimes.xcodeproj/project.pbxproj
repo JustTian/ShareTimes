@@ -140,6 +140,14 @@
 		31716B5F1957B5A600DF9A07 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31716B5E1957B5A600DF9A07 /* CustomTextView.m */; };
 		31C2AEC51946B022008D96B7 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C2AEC41946B022008D96B7 /* FourthViewController.m */; };
 		31C2AEC71946B036008D96B7 /* fourthViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 31C2AEC61946B036008D96B7 /* fourthViewController.json */; };
+		680DAB5F19586CAA000F0994 /* pictureViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 680DAB5E19586CAA000F0994 /* pictureViewController.json */; };
+		680DAB6219586DAC000F0994 /* WSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 680DAB6119586DAC000F0994 /* WSecondTableViewCell.m */; };
+		680DAB6519587B37000F0994 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680DAB6419587B37000F0994 /* SelectViewController.m */; };
+		680DAB6819587B5E000F0994 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680DAB6719587B5E000F0994 /* PictureViewController.m */; };
+		680DAB6B19587B6B000F0994 /* VoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680DAB6A19587B6B000F0994 /* VoiceViewController.m */; };
+		680DAB6E19587B9E000F0994 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680DAB6D19587B9E000F0994 /* TextViewController.m */; };
+		680DAB7019587E4B000F0994 /* selectViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 680DAB6F19587E4B000F0994 /* selectViewController.json */; };
+		680DAB7219587E67000F0994 /* ybViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 680DAB7119587E67000F0994 /* ybViewController.json */; };
 		68921F7C1957066800B917D5 /* textViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 68921F7B1957066800B917D5 /* textViewController.json */; };
 		68921F7E1957110100B917D5 /* voiceViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 68921F7D1957110100B917D5 /* voiceViewController.json */; };
 		68921F9D1957126600B917D5 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 68921F801957126600B917D5 /* 1.png */; };
@@ -394,6 +402,19 @@
 		31C2AEC31946B022008D96B7 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
 		31C2AEC41946B022008D96B7 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 		31C2AEC61946B036008D96B7 /* fourthViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fourthViewController.json; sourceTree = "<group>"; };
+		680DAB5E19586CAA000F0994 /* pictureViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pictureViewController.json; sourceTree = "<group>"; };
+		680DAB6019586DAC000F0994 /* WSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSecondTableViewCell.h; sourceTree = "<group>"; };
+		680DAB6119586DAC000F0994 /* WSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSecondTableViewCell.m; sourceTree = "<group>"; };
+		680DAB6319587B37000F0994 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
+		680DAB6419587B37000F0994 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		680DAB6619587B5E000F0994 /* PictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewController.h; sourceTree = "<group>"; };
+		680DAB6719587B5E000F0994 /* PictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureViewController.m; sourceTree = "<group>"; };
+		680DAB6919587B6B000F0994 /* VoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceViewController.h; sourceTree = "<group>"; };
+		680DAB6A19587B6B000F0994 /* VoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceViewController.m; sourceTree = "<group>"; };
+		680DAB6C19587B9E000F0994 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		680DAB6D19587B9E000F0994 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		680DAB6F19587E4B000F0994 /* selectViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = selectViewController.json; sourceTree = "<group>"; };
+		680DAB7119587E67000F0994 /* ybViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ybViewController.json; sourceTree = "<group>"; };
 		68921F7B1957066800B917D5 /* textViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textViewController.json; sourceTree = "<group>"; };
 		68921F7D1957110100B917D5 /* voiceViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = voiceViewController.json; sourceTree = "<group>"; };
 		68921F801957126600B917D5 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -541,8 +562,11 @@
 				31064F751945431F00AD8C55 /* LoginViewController.json */,
 				31C2AEC61946B036008D96B7 /* fourthViewController.json */,
 				311B95B1194FD00E0063559F /* textM1ViewController.json */,
-				68921F7B1957066800B917D5 /* textViewController.json */,
+				680DAB6F19587E4B000F0994 /* selectViewController.json */,
+				680DAB5E19586CAA000F0994 /* pictureViewController.json */,
 				68921F7D1957110100B917D5 /* voiceViewController.json */,
+				68921F7B1957066800B917D5 /* textViewController.json */,
+				680DAB7119587E67000F0994 /* ybViewController.json */,
 				3122916B194065E900E81937 /* Images.xcassets */,
 				31229160194065E900E81937 /* Supporting Files */,
 			);
@@ -821,6 +845,8 @@
 				312291FD1940679600E81937 /* WCustomTableView.m */,
 				312291FE1940679600E81937 /* WFirstCustomCell.h */,
 				312291FF1940679600E81937 /* WFirstCustomCell.m */,
+				680DAB6019586DAC000F0994 /* WSecondTableViewCell.h */,
+				680DAB6119586DAC000F0994 /* WSecondTableViewCell.m */,
 				31044339194ADE6200A2AAB9 /* WBaseTableViewCell.h */,
 				3104433A194ADE6200A2AAB9 /* WBaseTableViewCell.m */,
 			);
@@ -877,6 +903,14 @@
 				31281717194165A600BED569 /* TabBarViewController.m */,
 				31281719194165F300BED569 /* FunctionViewController.h */,
 				3128171A194165F400BED569 /* FunctionViewController.m */,
+				680DAB6319587B37000F0994 /* SelectViewController.h */,
+				680DAB6419587B37000F0994 /* SelectViewController.m */,
+				680DAB6619587B5E000F0994 /* PictureViewController.h */,
+				680DAB6719587B5E000F0994 /* PictureViewController.m */,
+				680DAB6919587B6B000F0994 /* VoiceViewController.h */,
+				680DAB6A19587B6B000F0994 /* VoiceViewController.m */,
+				680DAB6C19587B9E000F0994 /* TextViewController.h */,
+				680DAB6D19587B9E000F0994 /* TextViewController.m */,
 				3128171C1941660A00BED569 /* UsersViewController.h */,
 				3128171D1941660A00BED569 /* UsersViewController.m */,
 				31064F701945429000AD8C55 /* LoginViewController.h */,
@@ -1074,6 +1108,7 @@
 				3128174C194169A000BED569 /* heart_fill_32x38.png in Resources */,
 				68921FA61957126600B917D5 /* delete.png in Resources */,
 				312292261940679600E81937 /* register_password@2x.png in Resources */,
+				680DAB5F19586CAA000F0994 /* pictureViewController.json in Resources */,
 				68921FAA1957126600B917D5 /* iandmark.png in Resources */,
 				31064F74194542F200AD8C55 /* functionViewController.json in Resources */,
 				31C2AEC71946B036008D96B7 /* fourthViewController.json in Resources */,
@@ -1100,6 +1135,8 @@
 				31281757194169A000BED569 /* mail_32x24.png in Resources */,
 				68921F7E1957110100B917D5 /* voiceViewController.json in Resources */,
 				68921FB91957126600B917D5 /* uncheck_the_circle.png in Resources */,
+				680DAB7219587E67000F0994 /* ybViewController.json in Resources */,
+				680DAB7019587E4B000F0994 /* selectViewController.json in Resources */,
 				31281741194169A000BED569 /* 3.png in Resources */,
 				68921FA11957126600B917D5 /* 29.png in Resources */,
 				68921FB21957126600B917D5 /* textbox.png in Resources */,
@@ -1167,6 +1204,7 @@
 				312292401940679600E81937 /* WFirstCustomCell.m in Sources */,
 				31229248194068B300E81937 /* WidgetSettingForLayout.m in Sources */,
 				3122923A1940679600E81937 /* CustomSwitch.m in Sources */,
+				680DAB6819587B5E000F0994 /* PictureViewController.m in Sources */,
 				312292431940679600E81937 /* CustomView.m in Sources */,
 				3122916A194065E900E81937 /* AppDelegate.m in Sources */,
 				311A33BD194A984F003A5D26 /* AFURLSessionManager.m in Sources */,
@@ -1188,6 +1226,7 @@
 				3122920D1940679600E81937 /* UIImage+Additions.m in Sources */,
 				311A33B5194A984F003A5D26 /* AFHTTPRequestOperation.m in Sources */,
 				3122924E19406B4F00E81937 /* MainViewController.m in Sources */,
+				680DAB6519587B37000F0994 /* SelectViewController.m in Sources */,
 				310A7D6219419AA1000D8AD8 /* CommonDataClass.m in Sources */,
 				31281718194165A600BED569 /* TabBarViewController.m in Sources */,
 				31716B5F1957B5A600DF9A07 /* CustomTextView.m in Sources */,
@@ -1197,12 +1236,14 @@
 				312292441940679600E81937 /* CustomViewOfMapper.m in Sources */,
 				311A33BB194A984F003A5D26 /* AFURLRequestSerialization.m in Sources */,
 				3122923F1940679600E81937 /* WCustomTableView.m in Sources */,
+				680DAB6E19587B9E000F0994 /* TextViewController.m in Sources */,
 				312817151941560C00BED569 /* RegisterViewController.m in Sources */,
 				312292141940679600E81937 /* LabelForLeftView.m in Sources */,
 				3122923E1940679600E81937 /* FirstCellMember.m in Sources */,
 				312292301940679600E81937 /* RefreshFooterView.m in Sources */,
 				312292131940679600E81937 /* GridMainTableView.m in Sources */,
 				311A33B7194A984F003A5D26 /* AFHTTPSessionManager.m in Sources */,
+				680DAB6B19587B6B000F0994 /* VoiceViewController.m in Sources */,
 				31064F721945429000AD8C55 /* LoginViewController.m in Sources */,
 				3122920B1940679600E81937 /* HandlesClickAction.m in Sources */,
 				312292411940679600E81937 /* CustomTextField.m in Sources */,
@@ -1225,6 +1266,7 @@
 				3122921C1940679600E81937 /* CustomLabel.m in Sources */,
 				3122922C1940679600E81937 /* Utils.m in Sources */,
 				312292331940679600E81937 /* WZRefrshConst.m in Sources */,
+				680DAB6219586DAC000F0994 /* WSecondTableViewCell.m in Sources */,
 				312292421940679600E81937 /* TextFieldOfMapper.m in Sources */,
 				3122922B1940679600E81937 /* TopNavBar.m in Sources */,
 				3122923B1940679600E81937 /* SwitchOfMapper.m in Sources */,

@@ -45,8 +45,6 @@
 //        self.textLabel.font = [UIFont boldSystemFontOfSize:14];
 //        self.contentView.backgroundColor = [UIColor grayColor];
         self.wTestLabel.textColor = [UIColor redColor];
-        self.textLabel.textColor  = [UIColor blueColor];
-        self.detailTextLabel.textColor = [UIColor brownColor];
     }
     return self;
 }
