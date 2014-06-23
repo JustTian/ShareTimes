@@ -10,7 +10,10 @@
 
 @class TopNavBar;
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController<NSURLConnectionDataDelegate>{
+    NSMutableData *ldata;
+}
+
 
 
 @property (nonatomic,strong) UITableView *registerTableView;

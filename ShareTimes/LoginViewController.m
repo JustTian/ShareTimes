@@ -18,7 +18,9 @@
 
 @end
 
-@implementation LoginViewController
+@implementation LoginViewController{
+    NSMutableData *ldata;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    ldata = [[NSMutableData alloc]init];
     // Do any additional setup after loading the view.
     wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
     NSString *nameJstring = @"LoginViewController.json";
@@ -64,8 +67,20 @@
                         [self presentViewController:regstrer animated:YES completion:nil];
                     }
                     if (cB.clickOfType == 1) {
-                        UsersViewController *userVC = [[UsersViewController alloc]init];
-                        [self presentViewController:userVC animated:YES completion:nil];
+//                        UsersViewController *userVC = [[UsersViewController alloc]init];
+//                        [self presentViewController:userVC animated:YES completion:nil];
+                        UITextField *nameTField = (UITextField *)[self.view viewWithTag:3001];
+                        UITextField *PwdTField = (UITextField *)[self.view viewWithTag:3002];
+                        NSLog(@"%@,%@",nameTField.text,PwdTField.text);
+                        NSString *lstr = [NSString stringWithFormat:@"op=login&data={\"USERNAME\":\"%@\",\"USERPWD\":\"%@\"}",nameTField.text,PwdTField.text];
+                        NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
+                        NSURL *lurl = [NSURL URLWithString:string];
+                        NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
+                        [lmutableURLRequest setHTTPMethod:@"post"];
+                        [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
+                        NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+                        [lURLConnection start];
+
                     }
                     NSLog(@"____________%@",[cB class]);
                 };
@@ -74,6 +89,21 @@
         }
         
     }
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    [ldata setLength:0];
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [ldata appendData:data];
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"54556%@",ldicionary);
+    if ([[ldicionary objectForKey:@"status"]isEqualToString:@"failure"]) {
+        [Utils alertTitle:@"提示" message:@"注册失败!" delegate:nil cancelBtn:@"确定" otherBtnName:nil];
+    }
+    
 }
 
 

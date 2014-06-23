@@ -57,4 +57,6 @@
 
 //customView的事件点击描述
 -(void)customViewClick:(NSArray *)array;
+//customTextView的事件点击描述
+-(void)customTextViewClick:(NSArray *)array;
 @end

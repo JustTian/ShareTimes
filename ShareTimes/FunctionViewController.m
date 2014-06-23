@@ -34,69 +34,77 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    ldata = [[NSMutableData alloc]init];
     // Do any additional setup after loading the view.
     
 //    self.view.backgroundColor = [UIColor grayColor];
     
-//    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
-//    NSString *nameJstring = @"LoginViewController.json";
-//    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameJstring];
-//    //利用载入类描绘出视图界面
-//    [dynamicLayout drawingInterfaceFromJSONName:nameJstring AndBaseView:self.view];
-//    
-//    NSDictionary *ldic = [dynamicLayout getItemsOfGroup:lDictionary];//直接调用解析的json文件的第一个字典----返回所有控件的tag值与类型的字典
-//    NSLog(@"***************%@",ldic);
-    
     //从本地json文件加载
-    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
-    
-    NSString *nameString = @"functionViewController.json";
-    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameString];
-    [dynamicLayout drawingInterfaceFromJSONName:nameString AndBaseView:self.view];
-    
-    NSDictionary *lDic = [dynamicLayout getItemsOfGroup:lDictionary];
-    NSLog(@"控件：%@",lDic);
-    //从网络获取加载
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSDictionary *ldicionary = [[NSDictionary alloc]init];
-//        NSString *lstring = @"http://m.weather.com.cn/data/101010100.html";
-        NSString *lurlString = [NSString stringWithFormat:@"http://192.168.1.85/es/server/esservice.ashx?op=getallprojects&data={\"UserID\":21}"];
-        NSURL *url = [NSURL URLWithString:lurlString];
-        NSData *ldata = [NSData dataWithContentsOfURL:url];
-        if (ldata == nil) {
-            NSLog(@"获取失败");
-        }else{
-            ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
-            
-        }
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            NSLog(@"ldictionary:%@",ldicionary);
-        });
-        
-    });
-//    AFHTTPRequestOperation *opration = [AFHTTPRequestOperation ]
-//    AFJSONRequestSerializer *operation = [AFJSONRequestSerializer jso]
-    
-//
-//    /*
-//     *
-//     *此后主要时取出实例化控件并做事件响应处理
-//     *
-//     */
+//    wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
 //    
-//    //通过tag值取出实例化的控件
+//    NSString *nameString = @"functionViewController.json";
+//    NSDictionary *lDictionary = [self dictionaryFromJSONName:nameString];
+//    [dynamicLayout drawingInterfaceFromJSONName:nameString AndBaseView:self.view];
+//    
+//    NSDictionary *lDic = [dynamicLayout getItemsOfGroup:lDictionary];
+//    NSLog(@"控件：%@",lDic);
+//    NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
+//    [self customButtonClick:cArray];//执行响应的响应事件
+//    
+//    NSArray *tabelViewArray = [dynamicLayout instanceCustomTabelViewFromDic:lDic AndSupperView:self.view];
+//    [self customTableViewClick:tabelViewArray];
+    //从网络获取加载
+    NSString *lstr = @"op=getallprojects&data={\"UserID\":\"21\"}";
+    NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
+    NSURL *lurl = [NSURL URLWithString:string];
+    NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
+    [lmutableURLRequest setHTTPMethod:@"post"];
+    [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+    [lURLConnection start];
+
+
+    /*
+     *
+     *此后主要时取出实例化控件并做事件响应处理
+     *
+     */
+    
+    //通过tag值取出实例化的控件
 //    NSArray *buttonArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];
-//    //取出的实例化控件添加响应方法
-//    [self customButtonClick:buttonArray];
-//
-    
-    NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
-    [self customButtonClick:cArray];//执行响应的响应事件
-    
-    NSArray *tabelViewArray = [dynamicLayout instanceCustomTabelViewFromDic:lDic AndSupperView:self.view];
-    [self customTableViewClick:tabelViewArray];
+    //取出的实例化控件添加响应方法
+//    [self customButtonClick:buttonArray]
 
 }
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    [ldata setLength:0];
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [ldata appendData:data];
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
+//    NSLog(@"54556%@",ldicionary);
+    if (![[ldicionary objectForKey:@"status"]isEqualToString:@"failure"]) {
+        wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
+        [dynamicLayout drawingInterfaceFromURLDictionary:ldicionary AndBaseView:self.view];
+        
+        NSDictionary *lDic = [dynamicLayout getItemsOfGroup:ldicionary];
+        NSLog(@"控件：%@",lDic);
+        NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
+        [self customButtonClick:cArray];//执行响应的响应事件
+        
+        NSArray *tabelViewArray = [dynamicLayout instanceCustomTabelViewFromDic:lDic AndSupperView:self.view];
+        [self customTableViewClick:tabelViewArray];
+    }else{
+        UIAlertView *alerVIEW = [[UIAlertView alloc]initWithTitle:@"提示" message:@"获取数据失败" delegate:self cancelButtonTitle:@"cancle" otherButtonTitles: nil];
+        [alerVIEW show];
+    }
+    
+}
+
+
 #pragma mark 自定义按钮控件的响应时间描述
 -(void)customButtonClick:(NSArray *)array{
     if (array.count) {
@@ -146,7 +154,8 @@
                         FourthViewController *fourVC = [[FourthViewController alloc]init];
                         [self.navigationController pushViewController:fourVC animated:YES];
                     }else if (indexPath.row == 1){
-                        NSLog(@"de er ge cell");
+                        TestM1ViewController *textMVC = [[TestM1ViewController alloc]init];
+                        [self.navigationController pushViewController:textMVC animated:YES];
                     }else{
                         TestM1ViewController *textMVC = [[TestM1ViewController alloc]init];
                         [self.navigationController pushViewController:textMVC animated:YES];
@@ -159,6 +168,8 @@
         }
     }
 }
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 //    [self.tabBarController setHidesBottomBarWhenPushed:NO];

@@ -295,6 +295,19 @@
     [sender resignFirstResponder];
     NSLog(@"resign");
 }
+//textView的事件监听描述
+-(void)customTextViewClick:(NSArray *)array{
+    if (array.count) {
+        for (int i =0; i<array.count; i++) {
+            if ([[array objectAtIndex:i]isKindOfClass:[CustomTextView class]]){
+//                CustomTextView *cTextView = [array objectAtIndex:i];
+
+                //
+            }
+        }
+    }
+    
+}
 //customView的事件点击描述
 -(void)customViewClick:(NSArray *)array{
     if (array.count) {

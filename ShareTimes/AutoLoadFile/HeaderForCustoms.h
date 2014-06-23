@@ -20,5 +20,6 @@
 #import "CustomTextField.h"
 #import "CustomView.h"
 #import "CustomScrollerView.h"
+#import "CustomTextView.h"
 
 #endif

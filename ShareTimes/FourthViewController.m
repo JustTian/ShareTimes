@@ -57,6 +57,8 @@
     NSArray *textFieldArray = [dynamicLayout instanceTextFieldFromDic:ldic AndSupperView:self.view];
     [self customTextFieldClick:textFieldArray];
     
+    NSArray *textViewArray = [dynamicLayout instanceTextViewFromDic:ldic AndSupperView:self.view];
+    [self customTextViewClick:textViewArray];
     //取出label数组
     self.cLabelArray = [dynamicLayout instanceCustomLabelFromDic:ldic AndSupperView:self.view];
     
@@ -94,6 +96,10 @@
                     //                        NSLog(@"%ld",(long)alertView.cancelButtonIndex);
                     //                        NSLog(@"%ld",(long)alertView.firstOtherButtonIndex);
                     //                    }
+                    //语音功能
+                    if (cB.clickOfType == 10) {
+                        NSLog(@"yuyin");
+                    }
                     NSLog(@"____________%@",[cB class]);
                 };
                 

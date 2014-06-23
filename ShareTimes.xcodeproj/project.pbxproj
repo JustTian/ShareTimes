@@ -17,6 +17,7 @@
 		31064F7F19454E8100AD8C55 /* user_name_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 31064F7B19454E8100AD8C55 /* user_name_icon.png */; };
 		31064F8019454E8100AD8C55 /* user_name_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31064F7C19454E8100AD8C55 /* user_name_icon@2x.png */; };
 		310A7D6219419AA1000D8AD8 /* CommonDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 310A7D6119419AA1000D8AD8 /* CommonDataClass.m */; };
+		31137C2419582E7700C904EA /* 客户端功能接口.doc in Resources */ = {isa = PBXBuildFile; fileRef = 31137C2319582E7700C904EA /* 客户端功能接口.doc */; };
 		311A33B5194A984F003A5D26 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 311A33A3194A984F003A5D26 /* AFHTTPRequestOperation.m */; };
 		311A33B6194A984F003A5D26 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 311A33A5194A984F003A5D26 /* AFHTTPRequestOperationManager.m */; };
 		311A33B7194A984F003A5D26 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 311A33A7194A984F003A5D26 /* AFHTTPSessionManager.m */; };
@@ -135,6 +136,8 @@
 		31281759194169A000BED569 /* user_18x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128173C194169A000BED569 /* user_18x24.png */; };
 		3128175A194169A000BED569 /* user_24x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128173D194169A000BED569 /* user_24x32.png */; };
 		3128175B194169A000BED569 /* x_alt_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3128173E194169A000BED569 /* x_alt_32x32.png */; };
+		31716B5C1957B4BA00DF9A07 /* TextViewOfMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 31716B5B1957B4BA00DF9A07 /* TextViewOfMapper.m */; };
+		31716B5F1957B5A600DF9A07 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31716B5E1957B5A600DF9A07 /* CustomTextView.m */; };
 		31C2AEC51946B022008D96B7 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C2AEC41946B022008D96B7 /* FourthViewController.m */; };
 		31C2AEC71946B036008D96B7 /* fourthViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 31C2AEC61946B036008D96B7 /* fourthViewController.json */; };
 		68921F7C1957066800B917D5 /* textViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 68921F7B1957066800B917D5 /* textViewController.json */; };
@@ -194,6 +197,7 @@
 		31064F7C19454E8100AD8C55 /* user_name_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_name_icon@2x.png"; sourceTree = "<group>"; };
 		310A7D6019419AA1000D8AD8 /* CommonDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDataClass.h; sourceTree = "<group>"; };
 		310A7D6119419AA1000D8AD8 /* CommonDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDataClass.m; sourceTree = "<group>"; };
+		31137C2319582E7700C904EA /* 客户端功能接口.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "客户端功能接口.doc"; sourceTree = "<group>"; };
 		311A33A2194A984F003A5D26 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		311A33A3194A984F003A5D26 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		311A33A4194A984F003A5D26 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -383,6 +387,10 @@
 		3128173C194169A000BED569 /* user_18x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_18x24.png; sourceTree = "<group>"; };
 		3128173D194169A000BED569 /* user_24x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_24x32.png; sourceTree = "<group>"; };
 		3128173E194169A000BED569 /* x_alt_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_alt_32x32.png; sourceTree = "<group>"; };
+		31716B5A1957B4BA00DF9A07 /* TextViewOfMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewOfMapper.h; sourceTree = "<group>"; };
+		31716B5B1957B4BA00DF9A07 /* TextViewOfMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewOfMapper.m; sourceTree = "<group>"; };
+		31716B5D1957B5A600DF9A07 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		31716B5E1957B5A600DF9A07 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		31C2AEC31946B022008D96B7 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
 		31C2AEC41946B022008D96B7 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 		31C2AEC61946B036008D96B7 /* fourthViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fourthViewController.json; sourceTree = "<group>"; };
@@ -505,6 +513,7 @@
 		3122915F194065E900E81937 /* ShareTimes */ = {
 			isa = PBXGroup;
 			children = (
+				31716B591957B47400DF9A07 /* CustomTextView */,
 				3122924919406A3F00E81937 /* 宏定义文件 */,
 				31229245194068B300E81937 /* Singleton Pattern */,
 				312291951940679500E81937 /* CustomButton */,
@@ -543,6 +552,7 @@
 		31229160194065E900E81937 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				31137C2319582E7700C904EA /* 客户端功能接口.doc */,
 				31229161194065E900E81937 /* ShareTimes-Info.plist */,
 				31229162194065E900E81937 /* InfoPlist.strings */,
 				31229165194065E900E81937 /* main.m */,
@@ -921,6 +931,17 @@
 			path = Iamges;
 			sourceTree = "<group>";
 		};
+		31716B591957B47400DF9A07 /* CustomTextView */ = {
+			isa = PBXGroup;
+			children = (
+				31716B5A1957B4BA00DF9A07 /* TextViewOfMapper.h */,
+				31716B5B1957B4BA00DF9A07 /* TextViewOfMapper.m */,
+				31716B5D1957B5A600DF9A07 /* CustomTextView.h */,
+				31716B5E1957B5A600DF9A07 /* CustomTextView.m */,
+			);
+			path = CustomTextView;
+			sourceTree = "<group>";
+		};
 		68921F7F1957126600B917D5 /* 新建文件夹 (2)(1) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1129,7 @@
 				3122921F1940679600E81937 /* button_back_bg_highlight@2x.png in Resources */,
 				31281746194169A000BED569 /* 8.png in Resources */,
 				68921F7C1957066800B917D5 /* textViewController.json in Resources */,
+				31137C2419582E7700C904EA /* 客户端功能接口.doc in Resources */,
 				68921FB41957126600B917D5 /* the_selected_square.png in Resources */,
 				3128174E194169A000BED569 /* heart_stroke_24x21.png in Resources */,
 				68921FB61957126600B917D5 /* title_bar.png in Resources */,
@@ -1168,6 +1190,7 @@
 				3122924E19406B4F00E81937 /* MainViewController.m in Sources */,
 				310A7D6219419AA1000D8AD8 /* CommonDataClass.m in Sources */,
 				31281718194165A600BED569 /* TabBarViewController.m in Sources */,
+				31716B5F1957B5A600DF9A07 /* CustomTextView.m in Sources */,
 				312292171940679600E81937 /* ModleForLeftTitleVIew.m in Sources */,
 				3122922D1940679600E81937 /* CpageControl.m in Sources */,
 				31229166194065E900E81937 /* main.m in Sources */,
@@ -1190,6 +1213,7 @@
 				312292311940679600E81937 /* RefreshHeaderView.m in Sources */,
 				3104433B194ADE6200A2AAB9 /* WBaseTableViewCell.m in Sources */,
 				3122920A1940679600E81937 /* CountString.m in Sources */,
+				31716B5C1957B4BA00DF9A07 /* TextViewOfMapper.m in Sources */,
 				312292371940679600E81937 /* SegmentOfMapper.m in Sources */,
 				3128171B194165F400BED569 /* FunctionViewController.m in Sources */,
 				3122921D1940679600E81937 /* LabelOfMapper.m in Sources */,
@@ -1327,6 +1351,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC86879B-A469-484A-8F0F-B103331B3838";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1342,6 +1367,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC86879B-A469-484A-8F0F-B103331B3838";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

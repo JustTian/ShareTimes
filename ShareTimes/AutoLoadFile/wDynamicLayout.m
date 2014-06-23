@@ -24,11 +24,12 @@
 -(id)init{
     self = [super init];
     if (self) {
-        typeOfArray = @[@"button",@"label",@"textField",@"customView",@"segment",@"slider",@"pageControl",@"scrollView",@"switch",@"imageView",@"tableView"];//用于判断接受控键的类型
+        typeOfArray = @[@"button",@"label",@"textField",@"customView",@"segment",@"slider",@"pageControl",@"scrollView",@"switch",@"imageView",@"tableView",@"textView"];//用于判断接受控键的类型
     }
     return self;
 }
 
+//通过json名加载
 -(void)drawingInterfaceFromJSONName:(NSString *)nameOfJSON AndBaseView:(id) baseView{
 
     NSDictionary *lDictionary = [self dictionaryFromJSONName:nameOfJSON];
@@ -36,6 +37,16 @@
     for (int i= 0; i<rows; i++) {
         NSString *keyOfGroupItems = [NSString stringWithFormat:@"itemsOfGroup_%d",i];
         NSDictionary *lDic = [lDictionary objectForKey:keyOfGroupItems];
+        [self loadItemsForGroup:lDic AndBaseView:baseView];
+    }
+
+}
+//通过网络获取的字典加载
+-(void)drawingInterfaceFromURLDictionary:(NSDictionary *)dictionary AndBaseView:(id) baseView{
+    int rows = [[dictionary objectForKey:@"rowsOfType"] intValue];//纪录json描绘的有多少行
+    for (int i= 0; i<rows; i++) {
+        NSString *keyOfGroupItems = [NSString stringWithFormat:@"itemsOfGroup_%d",i];
+        NSDictionary *lDic = [dictionary objectForKey:keyOfGroupItems];
         [self loadItemsForGroup:lDic AndBaseView:baseView];
     }
 
@@ -108,6 +119,11 @@
                         [baseView addSubview:wtableView];
                         break;
                     }//加载tableview
+                    case 11:{
+                        CustomTextView *cTextView = [CustomTextView loadCustomLabelFromMode:AttributeDic];
+                        [baseView addSubview:cTextView];
+                        break;
+                    }//加载textView
                     default:
                         break;
                 }
@@ -215,6 +231,12 @@
                     }
 
                     case 10:{
+                        NSString *handlesOfType = [AttributeDic objectForKey:typeOfControl];
+                        NSInteger numOfTag = [[AttributeDic objectForKey:@"TkeyOfTag"] intValue];
+                        [lMdic setObject:handlesOfType forKey:[NSString stringWithFormat:@"%ld",(long)numOfTag]];
+                        break;
+                    }
+                    case 11:{
                         NSString *handlesOfType = [AttributeDic objectForKey:typeOfControl];
                         NSInteger numOfTag = [[AttributeDic objectForKey:@"TkeyOfTag"] intValue];
                         [lMdic setObject:handlesOfType forKey:[NSString stringWithFormat:@"%ld",(long)numOfTag]];
@@ -379,6 +401,7 @@
     }
     return mArray;
 }
+
 -(NSArray *)instanceCustomViewFromDic:(NSDictionary *)dictionary AndSupperView:(id)supperView{
     NSMutableArray *mArray = [[NSMutableArray alloc]init];
     NSArray *allValue = [dictionary allValues];
@@ -406,6 +429,22 @@
     }
     return mArray;
 }
+
+-(NSArray *)instanceTextViewFromDic:(NSDictionary *)dictionary AndSupperView:(id)supperView{
+    NSMutableArray *mArray = [[NSMutableArray alloc]init];
+    NSArray *allValue = [dictionary allValues];
+    NSArray *allKeys = [dictionary allKeys];//所有的tag值数组
+    for (int i = 0; i<allValue.count; i++) {
+        if ([[allValue objectAtIndex:i]isEqualToString:[typeOfArray objectAtIndex:11]]) {
+            //            NSString *key = [NSString stringWithFormat:@"300%d",a];
+            NSString *key = [allKeys objectAtIndex:i];
+            CustomTextView *cImage = (CustomTextView *)[supperView viewWithTag:[key intValue]];
+            [mArray addObject:cImage];
+        }
+    }
+    return mArray;
+}
+
 @end
 
 @implementation wDynamicLayout (headersClickAction)

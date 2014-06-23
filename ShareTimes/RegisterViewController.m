@@ -11,17 +11,22 @@
 
 @interface RegisterViewController ()<UITableViewDataSource,UITableViewDelegate,TopNavBarDelegate,UITextFieldDelegate>
 
-@property (nonatomic,assign) BOOL          isRead;
+@property (nonatomic,assign) BOOL  isRead;
 
 @end
 
-@implementation RegisterViewController
+@implementation RegisterViewController{
+    UITextField *nameTField;
+    UITextField *PwdTField;
+//    UITextField 
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        ldata = [[NSMutableData alloc]init];
     }
     return self;
 }
@@ -171,14 +176,20 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 
     if (indexPath.section == 0){
-        cell.imageView.image = PNGIMAGE(@"register_email@2x");
-        UITextField *textField= [[UITextField alloc] initWithFrame:CGRectMake(50.f, 12.f, 220.f, 21.f)];
-        textField.tag = Tag_EmailTextField;
-        textField.returnKeyType = UIReturnKeyDone;
-        textField.delegate = self;
-        textField.placeholder = @"邮箱,必填";
-        textField.keyboardType = UIKeyboardTypeEmailAddress;
-        [cell addSubview:textField];
+//        cell.imageView.image = PNGIMAGE(@"register_email@2x");
+//        UITextField *textField= [[UITextField alloc] initWithFrame:CGRectMake(50.f, 12.f, 220.f, 21.f)];
+//        textField.tag = Tag_EmailTextField;
+//        textField.returnKeyType = UIReturnKeyDone;
+//        textField.delegate = self;
+//        textField.placeholder = @"邮箱,选填";
+//        textField.keyboardType = UIKeyboardTypeEmailAddress;
+//        [cell addSubview:textField];
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:cell.frame];
+        label.text = @"欢迎进入注册界面";
+        label.textAlignment = NSTextAlignmentCenter;
+        [cell addSubview:label];
+        
         
     }else if (indexPath.section == 1){
         
@@ -402,10 +413,37 @@
     }else{
         
         if ([self checkValidityTextField]) {
+            //从网络获取加载
+            nameTField = (UITextField *)[self.view viewWithTag:Tag_AccountTextField];
+            PwdTField = (UITextField *)[self.view viewWithTag:Tag_TempPasswordTextField];
+
+            NSString *lstr = [NSString stringWithFormat:@"op=register&data=[{\"USERNAME\":\"%@\",\"USERPWD\":\"%@\"}]",nameTField.text,PwdTField.text];
+            NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
             
-            [Utils alertTitle:@"提示" message:@"资料填写完整可以进行注册请求" delegate:nil cancelBtn:@"确定" otherBtnName:nil];
+            NSURL *lurl = [NSURL URLWithString:string];
+            NSLog(@"%@",lurl);
+            NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
+            [lmutableURLRequest setHTTPMethod:@"post"];
+            [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
+            NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+            [lURLConnection start];
+            
         }
     }
+}
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    [ldata setLength:0];
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [ldata appendData:data];
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSDictionary *ldicionary = [NSJSONSerialization JSONObjectWithData:ldata options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"54556%@",ldicionary);
+    if (![[ldicionary objectForKey:@"status"]isEqualToString:@"failure"]) {
+       [Utils alertTitle:@"提示" message:@"资料填写完整可以进行注册请求" delegate:nil cancelBtn:@"确定" otherBtnName:nil];
+    }
+    
 }
 
 /**
@@ -415,12 +453,12 @@
 - (BOOL)checkValidityTextField
 {
     
-    if ([(UITextField *)[self.view viewWithTag:Tag_EmailTextField] text] == nil || [[(UITextField *)[self.view viewWithTag:Tag_EmailTextField] text] isEqualToString:@""]) {
-        
-        [Utils alertTitle:@"提示" message:@"邮箱不能为空" delegate:self cancelBtn:@"取消" otherBtnName:nil];
-        
-        return NO;
-    }
+//    if ([(UITextField *)[self.view viewWithTag:Tag_EmailTextField] text] == nil || [[(UITextField *)[self.view viewWithTag:Tag_EmailTextField] text] isEqualToString:@""]) {
+//        
+//        [Utils alertTitle:@"提示" message:@"邮箱不能为空" delegate:self cancelBtn:@"取消" otherBtnName:nil];
+//        
+//        return NO;
+//    }
     if ([(UITextField *)[self.view viewWithTag:Tag_AccountTextField] text] == nil || [[(UITextField *)[self.view viewWithTag:Tag_AccountTextField] text] isEqualToString:@""]) {
         
         [Utils alertTitle:@"提示" message:@"用户名不能为空" delegate:self cancelBtn:@"取消" otherBtnName:nil];
@@ -462,17 +500,17 @@
     
     switch (textField.tag) {
             
-        case Tag_EmailTextField:
-        {
-            if ([textField text] != nil && [[textField text] length]!= 0) {
-                
-                if (![Utils isValidateEmail:textField.text]) {
-                    
-                    [Utils alertTitle:@"提示" message:@"邮箱格式不正确" delegate:nil cancelBtn:@"取消" otherBtnName:nil];
-                }
-            }
-        }
-            break;
+//        case Tag_EmailTextField:
+//        {
+//            if ([textField text] != nil && [[textField text] length]!= 0) {
+//                
+//                if (![Utils isValidateEmail:textField.text]) {
+//                    
+//                    [Utils alertTitle:@"提示" message:@"邮箱格式不正确" delegate:nil cancelBtn:@"取消" otherBtnName:nil];
+//                }
+//            }
+//        }
+//            break;
         case Tag_TempPasswordTextField:
         {
             if ([textField text] != nil && [[textField text] length]!= 0) {

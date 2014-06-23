@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FunctionViewController : UIViewController
+@interface FunctionViewController : UIViewController<NSURLConnectionDataDelegate>{
+  NSMutableData *ldata;
+}
 
 @end
