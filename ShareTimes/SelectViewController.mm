@@ -32,6 +32,7 @@
     CImageVIew *selectView;
     
     
+    
 }
 @property (nonatomic) BMKGeoCodeSearch *searcher;
 @property (nonatomic) BMKLocationService *locationService;
@@ -39,6 +40,8 @@
 
 @implementation SelectViewController{
     NSMutableData *ldata;
+    
+//    int   selectNUM;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -82,6 +85,42 @@
 //    [self.navigationController pushViewController:fVC animated:YES];
     //    [self.navigationController popViewControllerAnimated:YES];
 //    self.navigationController.viewControllers
+    
+//    [CommonDataClass sharCommonData].timuDataArray = oArray;
+//    NSDictionary *oDic = [oArray objectAtIndex:0];
+    
+//    [CommonDataClass sharCommonData].dataDic = [oDic objectForKey:@"Content"];
+//    [CommonDataClass sharCommonData].selectNum = 0;
+
+    [self.navigationController setNavigationBarHidden:YES];
+    if ([CommonDataClass sharCommonData].selectNum < [CommonDataClass sharCommonData].timuDataArray.count) {
+       NSInteger i = [CommonDataClass sharCommonData].selectNum;
+        i++;
+        [CommonDataClass sharCommonData].selectNum = i;
+        NSDictionary *oDic = [[CommonDataClass sharCommonData].timuDataArray objectAtIndex:i];
+        [CommonDataClass sharCommonData].dataDic = [oDic objectForKey:@"Content"];
+        if ([[oDic objectForKey:@"TitleType"]isEqualToString:@"0"]) {
+            SelectViewController *selec  = [[SelectViewController alloc]init];
+            [self.navigationController pushViewController:selec animated:YES];
+        }
+        
+        if ([[oDic objectForKey:@"TitleType"]isEqualToString:@"1"]) {
+            SelectViewController *selec  = [[SelectViewController alloc]init];
+            [self.navigationController pushViewController:selec animated:YES];
+        }
+
+        if ([[oDic objectForKey:@"TitleType"]isEqualToString:@"2"]) {
+            TextViewController *selec  = [[TextViewController alloc]init];
+            [self.navigationController pushViewController:selec animated:YES];
+        }
+
+        if ([[oDic objectForKey:@"TitleType"]isEqualToString:@"3"]) {
+            PictureViewController *selec  = [[PictureViewController alloc]init];
+            [self.navigationController pushViewController:selec animated:YES];
+        }
+
+    }
+    
     
 //    [CommonDataClass sharCommonData].topicalType =  topicalTypeOfSelect;
 //    [self jumpViewControllerFromTopicType:[CommonDataClass sharCommonData].topicalType];
@@ -219,15 +258,34 @@
     
     
     //从网络获取加载
-    NSString *lstr = @"op=getprojectinfo&data={\"UserID\":\"21\",\"ProjectID\":\"21\"}";
-    NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
-    NSURL *lurl = [NSURL URLWithString:string];
-    NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
-    [lmutableURLRequest setHTTPMethod:@"post"];
-    [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
-    [lURLConnection start];
-    
+    if ([CommonDataClass sharCommonData].timuDataArray.count == 0) {
+        NSString *lstr = @"op=getprojectinfo&data={\"UserID\":\"21\",\"ProjectID\":\"21\"}";
+        NSString *string = [NSString stringWithFormat:@"http://%@/es/server/esservice.ashx",ServerIP];
+        NSURL *lurl = [NSURL URLWithString:string];
+        NSMutableURLRequest *lmutableURLRequest = [NSMutableURLRequest requestWithURL:lurl];
+        [lmutableURLRequest setHTTPMethod:@"post"];
+        [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
+        [lURLConnection start];
+
+    }else{
+        NSLog(@"ldicionary  = %@",[CommonDataClass sharCommonData].dataDic);
+        wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
+        
+        [dynamicLayout drawingInterfaceFromURLDictionary:[CommonDataClass sharCommonData].dataDic AndBaseView:self.view];
+        
+        NSDictionary *lDic = [dynamicLayout getItemsOfGroup:[CommonDataClass sharCommonData].dataDic];
+        NSLog(@"控件：%@",lDic);
+        
+        
+        NSArray *cArray = [dynamicLayout instanceCustomButtonFromDic:lDic AndSupperView:self.view];//返回实例化自定义按钮的对象数组
+        [self customButtonClick:cArray];//执行响应的响应事件
+        NSArray *customViewArray = [dynamicLayout instanceCustomViewFromDic:lDic AndSupperView:self.view];
+        [self customViewClick:customViewArray];
+        //取出label数组
+        self.cLabelArray = [dynamicLayout instanceCustomLabelFromDic:lDic AndSupperView:self.view];
+
+    }
     
     /*
      *
@@ -263,8 +321,12 @@
         
         
         NSArray *oArray = [ldicionary objectForKey:@"items"];
+        [CommonDataClass sharCommonData].timuDataArray = oArray;
         NSDictionary *oDic = [oArray objectAtIndex:0];
+        
         [CommonDataClass sharCommonData].dataDic = [oDic objectForKey:@"Content"];
+        [CommonDataClass sharCommonData].selectNum = 0;
+        
         NSLog(@"ldicionary  = %@",[CommonDataClass sharCommonData].dataDic);
         wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];
         

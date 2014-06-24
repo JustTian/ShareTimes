@@ -35,6 +35,7 @@
 {
     [super viewDidLoad];
     [CommonDataClass sharCommonData].dataDic = [[NSDictionary alloc]init];
+    [CommonDataClass sharCommonData].timuDataArray = [[NSArray alloc]init];
     
 //    self.view.backgroundColor = [UIColor yellowColor];
     // Do any additional setup after loading the view.

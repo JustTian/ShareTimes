@@ -20,6 +20,9 @@ typedef NS_ENUM(NSInteger,wTopicalType) {
 @property(nonatomic,strong) NSString *userID;
 @property(nonatomic,assign) wTopicalType topicalType;
 
+@property (nonatomic,assign) NSInteger selectNum;
 @property (nonatomic,retain) NSDictionary *dataDic;
+
+@property (nonatomic,retain) NSArray *timuDataArray;
 //@property(NSString,strong) NSString *
 @end
