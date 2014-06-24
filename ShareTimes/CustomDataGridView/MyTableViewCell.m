@@ -29,7 +29,7 @@
         for(int i=0;i<integer;i++){
             
             GridHeaderView *headView=[[GridHeaderView alloc]initWithFrame:CGRectMake(i*kWidth, 0, kWidth-kWidthMargin, kHeight+kHeightMargin)];
-            headView.subLayoutMethod = 1;//用于加载数据显示的子视图设置
+            headView.subLayoutMethod = loadSubCellForGridView;//用于加载数据显示的子视图设置
             headView.delegate=self;
             headView.dataString = @"23";
             headView.backgroundColor=[UIColor whiteColor];

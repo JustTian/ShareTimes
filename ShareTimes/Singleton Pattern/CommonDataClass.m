@@ -14,6 +14,7 @@ static CommonDataClass *CDClass = nil;
     @synchronized(self){
         if (CDClass == nil) {
             CDClass = [[CommonDataClass alloc]init];
+//            CDClass.topicalType = topicalTypeOfSelect;
         }
     }
     return CDClass;

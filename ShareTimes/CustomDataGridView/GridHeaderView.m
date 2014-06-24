@@ -53,7 +53,7 @@
 -(id)init{
     self = [super init];
     if (self) {
-        self.subLayoutMethod = 0;
+        self.subLayoutMethod = loadHeaderForGridView;
         
         if (self.subLayoutMethod ==0) {
             self.numRoom=[[UILabel alloc]initWithFrame:CGRectZero];

@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import "TabBarViewController.h"
 
+#define  AppKey @"PAEB3uecZ0WZ1i8jNlGHePhK"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,6 +20,14 @@
     self.window.backgroundColor = [UIColor whiteColor];
 //    MainViewController *mainVC = [[MainViewController alloc]init];
 //    self.window.rootViewController = mainVC;
+    _mapManager = [[BMKMapManager alloc]init];
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [_mapManager start:AppKey  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+
+    
     TabBarViewController *tabBarContrller = [[TabBarViewController alloc]init];
     self.window.rootViewController = tabBarContrller;
     [self.window makeKeyAndVisible];
