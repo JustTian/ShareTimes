@@ -57,7 +57,7 @@
     //    [self.navigationController pushViewController:fVC animated:YES];
     //    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController setNavigationBarHidden:YES];
-    if ([CommonDataClass sharCommonData].selectNum < [CommonDataClass sharCommonData].timuDataArray.count) {
+    if ([CommonDataClass sharCommonData].selectNum < [CommonDataClass sharCommonData].timuDataArray.count-1) {
         NSInteger i = [CommonDataClass sharCommonData].selectNum;
         i++;
         [CommonDataClass sharCommonData].selectNum = i;
@@ -90,6 +90,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     ldata = [[NSMutableData alloc]init];
     addIVArray = [[NSMutableArray alloc]init];
     
@@ -122,7 +123,7 @@
         [lmutableURLRequest setHTTPBody:[lstr dataUsingEncoding:NSUTF8StringEncoding]];
         NSURLConnection *lURLConnection = [NSURLConnection connectionWithRequest:lmutableURLRequest delegate:self];
         [lURLConnection start];
-        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     }else{
         NSLog(@"ldicionary  = %@",[CommonDataClass sharCommonData].dataDic);
         wDynamicLayout *dynamicLayout = [[wDynamicLayout alloc]init];

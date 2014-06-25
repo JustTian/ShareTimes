@@ -48,7 +48,7 @@
     //    [self.navigationController pushViewController:fVC animated:YES];
     //    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController setNavigationBarHidden:YES];
-    if ([CommonDataClass sharCommonData].selectNum < [CommonDataClass sharCommonData].timuDataArray.count) {
+    if ([CommonDataClass sharCommonData].selectNum < [CommonDataClass sharCommonData].timuDataArray.count-1) {
         NSInteger i = [CommonDataClass sharCommonData].selectNum;
         i++;
         [CommonDataClass sharCommonData].selectNum = i;
@@ -82,6 +82,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     ldata = [[NSMutableData alloc]init];
     
     //添加上一页以及下一页按钮;
